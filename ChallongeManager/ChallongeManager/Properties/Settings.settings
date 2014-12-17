@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ChallongeManager.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Challonge_ID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ladose</Value>
+    </Setting>
+    <Setting Name="Challonge_APIkey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">UKvLMpJWWoSY3YDAfM6fCUADjxaNqJ4bpLncrfMP</Value>
+    </Setting>
+    <Setting Name="Challonge_GameList" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2X
+3rd Strike/3.3
+CvS2
+SSFIV/SSF4/USF4/USFIV/SF4
+Garou
+KoF98/KOF 98
+KoF13/KOF XIII/ KOF 13
+Karnov
+TTT2
+SSBM</Value>
+    </Setting>
+    <Setting Name="Challonge_SearchTag" Type="System.String" Scope="User">
+      <Value Profile="(Default)">LaDOSE.net</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tournaments type="array">
+  <tournament>
+    <accept-attachments type="boolean">false</accept-attachments>
+    <allow-participant-match-reporting type="boolean">true</allow-participant-match-reporting>
+    <anonymous-voting type="boolean">false</anonymous-voting>
+    <category nil="true"/>
+    <check-in-duration type="integer" nil="true"/>
+    <completed-at type="datetime">2014-08-24T19:45:17+02:00</completed-at>
+    <created-at type="datetime">2014-08-23T10:19:07+02:00</created-at>
+    <created-by-api type="boolean">false</created-by-api>
+    <credit-capped type="boolean">false</credit-capped>
+    <description/>
+    <enable-group-stage type="boolean">false</enable-group-stage>
+    <game-id type="integer" nil="true"/>
+    <hide-forum type="boolean">false</hide-forum>
+    <hide-seeds type="boolean">false</hide-seeds>
+    <hold-third-place-match type="boolean">false</hold-third-place-match>
+    <id type="integer">1164993</id>
+    <max-predictions-per-user type="integer">1</max-predictions-per-user>
+    <name>[24/08/14] LaDOSE.net - Ranking #6 - 2X</name>
+    <notify-users-when-matches-open type="boolean">true</notify-users-when-matches-open>
+    <notify-users-when-the-tournament-ends type="boolean">true</notify-users-when-the-tournament-ends>
+    <open-signup type="boolean">false</open-signup>
+    <participant-count-to-advance-per-group type="integer" nil="true"/>
+    <participants-count type="integer">24</participants-count>
+    <prediction-method type="integer">0</prediction-method>
+    <predictions-opened-at type="datetime" nil="true"/>
+    <private type="boolean">false</private>
+    <progress-meter type="integer">100</progress-meter>
+    <pts-for-bye type="decimal">1.0</pts-for-bye>
+    <pts-for-game-tie type="decimal">0.0</pts-for-game-tie>
+    <pts-for-game-win type="decimal">0.0</pts-for-game-win>
+    <pts-for-match-tie type="decimal">0.5</pts-for-match-tie>
+    <pts-for-match-win type="decimal">1.0</pts-for-match-win>
+    <quick-advance type="boolean">false</quick-advance>
+    <ranked-by>match wins</ranked-by>
+    <require-score-agreement type="boolean">false</require-score-agreement>
+    <rr-pts-for-game-tie type="decimal">0.0</rr-pts-for-game-tie>
+    <rr-pts-for-game-win type="decimal">0.0</rr-pts-for-game-win>
+    <rr-pts-for-match-tie type="decimal">0.5</rr-pts-for-match-tie>
+    <rr-pts-for-match-win type="decimal">1.0</rr-pts-for-match-win>
+    <sequential-pairings type="boolean">false</sequential-pairings>
+    <show-rounds type="boolean">true</show-rounds>
+    <signup-cap type="integer" nil="true"/>
+    <start-at type="datetime" nil="true"/>
+    <started-at type="datetime">2014-08-24T00:14:52+02:00</started-at>
+    <started-checking-in-at type="datetime" nil="true"/>
+    <state>complete</state>
+    <swiss-rounds type="integer">0</swiss-rounds>
+    <teams type="boolean">false</teams>
+    <tournament-type>double elimination</tournament-type>
+    <updated-at type="datetime">2014-08-24T19:45:17+02:00</updated-at>
+    <url>ndb74i1y</url>
+    <description-source/>
+    <subdomain nil="true"/>
+    <full-challonge-url>http://challonge.com/ndb74i1y</full-challonge-url>
+    <live-image-url>http://images.challonge.com/ndb74i1y.png</live-image-url>
+    <sign-up-url nil="true"/>
+    <review-before-finalizing type="boolean">true</review-before-finalizing>
+  </tournament>
+  <tournament>
+    <accept-attachments type="boolean">false</accept-attachments>
+    <allow-participant-match-reporting type="boolean">true</allow-participant-match-reporting>
+    <anonymous-voting type="boolean">false</anonymous-voting>
+    <category nil="true"/>
+    <check-in-duration type="integer" nil="true"/>
+    <completed-at type="datetime">2014-08-24T22:59:08+02:00</completed-at>
+    <created-at type="datetime">2014-08-23T10:19:32+02:00</created-at>
+    <created-by-api type="boolean">false</created-by-api>
+    <credit-capped type="boolean">false</credit-capped>
+    <description/>
+    <enable-group-stage type="boolean">false</enable-group-stage>
+    <game-id type="integer" nil="true"/>
+    <hide-forum type="boolean">false</hide-forum>
+    <hide-seeds type="boolean">false</hide-seeds>
+    <hold-third-place-match type="boolean">false</hold-third-place-match>
+    <id type="integer">1164995</id>
+    <max-predictions-per-user type="integer">1</max-predictions-per-user>
+    <name>[24/08/14] LaDOSE.net - Ranking #6 - 3.3</name>
+    <notify-users-when-matches-open type="boolean">true</notify-users-when-matches-open>
+    <notify-users-when-the-tournament-ends type="boolean">true</notify-users-when-the-tournament-ends>
+    <open-signup type="boolean">false</open-signup>
+    <participant-count-to-advance-per-group type="integer" nil="true"/>
+    <participants-count type="integer">16</participants-count>
+    <prediction-method type="integer">0</prediction-method>
+    <predictions-opened-at type="datetime" nil="true"/>
+    <private type="boolean">false</private>
+    <progress-meter type="integer">100</progress-meter>
+    <pts-for-bye type="decimal">1.0</pts-for-bye>
+    <pts-for-game-tie type="decimal">0.0</pts-for-game-tie>
+    <pts-for-game-win type="decimal">0.0</pts-for-game-win>
+    <pts-for-match-tie type="decimal">0.5</pts-for-match-tie>
+    <pts-for-match-win type="decimal">1.0</pts-for-match-win>
+    <quick-advance type="boolean">true</quick-advance>
+    <ranked-by>match wins</ranked-by>
+    <require-score-agreement type="boolean">false</require-score-agreement>
+    <rr-pts-for-game-tie type="decimal">0.0</rr-pts-for-game-tie>
+    <rr-pts-for-game-win type="decimal">0.0</rr-pts-for-game-win>
+    <rr-pts-for-match-tie type="decimal">0.5</rr-pts-for-match-tie>
+    <rr-pts-for-match-win type="decimal">1.0</rr-pts-for-match-win>
+    <sequential-pairings type="boolean">false</sequential-pairings>
+    <show-rounds type="boolean">true</show-rounds>
+    <signup-cap type="integer" nil="true"/>
+    <start-at type="datetime" nil="true"/>
+    <started-at type="datetime">2014-08-24T22:55:48+02:00</started-at>
+    <started-checking-in-at type="datetime" nil="true"/>
+    <state>complete</state>
+    <swiss-rounds type="integer">0</swiss-rounds>
+    <teams type="boolean">false</teams>
+    <tournament-type>double elimination</tournament-type>
+    <updated-at type="datetime">2014-08-24T22:59:08+02:00</updated-at>
+    <url>otkbzx0i</url>
+    <description-source/>
+    <subdomain nil="true"/>
+    <full-challonge-url>http://challonge.com/otkbzx0i</full-challonge-url>
+    <live-image-url>http://images.challonge.com/otkbzx0i.png</live-image-url>
+    <sign-up-url nil="true"/>
+    <review-before-finalizing type="boolean">true</review-before-finalizing>
+  </tournament>
+  <tournament>
+    <accept-attachments type="boolean">false</accept-attachments>
+    <allow-participant-match-reporting type="boolean">true</allow-participant-match-reporting>
+    <anonymous-voting type="boolean">false</anonymous-voting>
+    <category nil="true"/>
+    <check-in-duration type="integer" nil="true"/>
+    <completed-at type="datetime">2014-08-24T19:29:18+02:00</completed-at>
+    <created-at type="datetime">2014-08-23T10:19:55+02:00</created-at>
+    <created-by-api type="boolean">false</created-by-api>
+    <credit-capped type="boolean">false</credit-capped>
+    <description/>
+    <enable-group-stage type="boolean">false</enable-group-stage>
+    <game-id type="integer" nil="true"/>
+    <hide-forum type="boolean">false</hide-forum>
+    <hide-seeds type="boolean">false</hide-seeds>
+    <hold-third-place-match type="boolean">false</hold-third-place-match>
+    <id type="integer">1164998</id>
+    <max-predictions-per-user type="integer">1</max-predictions-per-user>
+    <name>[24/08/14] LaDOSE.net - Ranking #6 - USF4</name>
+    <notify-users-when-matches-open type="boolean">true</notify-users-when-matches-open>
+    <notify-users-when-the-tournament-ends type="boolean">true</notify-users-when-the-tournament-ends>
+    <open-signup type="boolean">false</open-signup>
+    <participant-count-to-advance-per-group type="integer" nil="true"/>
+    <participants-count type="integer">26</participants-count>
+    <prediction-method type="integer">0</prediction-method>
+    <predictions-opened-at type="datetime" nil="true"/>
+    <private type="boolean">false</private>
+    <progress-meter type="integer">100</progress-meter>
+    <pts-for-bye type="decimal">1.0</pts-for-bye>
+    <pts-for-game-tie type="decimal">0.0</pts-for-game-tie>
+    <pts-for-game-win type="decimal">0.0</pts-for-game-win>
+    <pts-for-match-tie type="decimal">0.5</pts-for-match-tie>
+    <pts-for-match-win type="decimal">1.0</pts-for-match-win>
+    <quick-advance type="boolean">false</quick-advance>
+    <ranked-by>match wins</ranked-by>
+    <require-score-agreement type="boolean">false</require-score-agreement>
+    <rr-pts-for-game-tie type="decimal">0.0</rr-pts-for-game-tie>
+    <rr-pts-for-game-win type="decimal">0.0</rr-pts-for-game-win>
+    <rr-pts-for-match-tie type="decimal">0.5</rr-pts-for-match-tie>
+    <rr-pts-for-match-win type="decimal">1.0</rr-pts-for-match-win>
+    <sequential-pairings type="boolean">false</sequential-pairings>
+    <show-rounds type="boolean">true</show-rounds>
+    <signup-cap type="integer" nil="true"/>
+    <start-at type="datetime" nil="true"/>
+    <started-at type="datetime">2014-08-24T01:26:01+02:00</started-at>
+    <started-checking-in-at type="datetime" nil="true"/>
+    <state>complete</state>
+    <swiss-rounds type="integer">0</swiss-rounds>
+    <teams type="boolean">false</teams>
+    <tournament-type>double elimination</tournament-type>
+    <updated-at type="datetime">2014-08-24T19:29:18+02:00</updated-at>
+    <url>qxvq61zg</url>
+    <description-source/>
+    <subdomain nil="true"/>
+    <full-challonge-url>http://challonge.com/qxvq61zg</full-challonge-url>
+    <live-image-url>http://images.challonge.com/qxvq61zg.png</live-image-url>
+    <sign-up-url nil="true"/>
+    <review-before-finalizing type="boolean">true</review-before-finalizing>
+  </tournament>
+  <tournament>
+    <accept-attachments type="boolean">false</accept-attachments>
+    <allow-participant-match-reporting type="boolean">true</allow-participant-match-reporting>
+    <anonymous-voting type="boolean">false</anonymous-voting>
+    <category nil="true"/>
+    <check-in-duration type="integer" nil="true"/>
+    <completed-at type="datetime">2014-08-24T22:54:59+02:00</completed-at>
+    <created-at type="datetime">2014-08-23T10:20:15+02:00</created-at>
+    <created-by-api type="boolean">false</created-by-api>
+    <credit-capped type="boolean">false</credit-capped>
+    <description/>
+    <enable-group-stage type="boolean">false</enable-group-stage>
+    <game-id type="integer" nil="true"/>
+    <hide-forum type="boolean">false</hide-forum>
+    <hide-seeds type="boolean">false</hide-seeds>
+    <hold-third-place-match type="boolean">false</hold-third-place-match>
+    <id type="integer">1164999</id>
+    <max-predictions-per-user type="integer">1</max-predictions-per-user>
+    <name>[24/08/14] LaDOSE.net - Ranking #6 - Garou</name>
+    <notify-users-when-matches-open type="boolean">true</notify-users-when-matches-open>
+    <notify-users-when-the-tournament-ends type="boolean">true</notify-users-when-the-tournament-ends>
+    <open-signup type="boolean">false</open-signup>
+    <participant-count-to-advance-per-group type="integer" nil="true"/>
+    <participants-count type="integer">10</participants-count>
+    <prediction-method type="integer">0</prediction-method>
+    <predictions-opened-at type="datetime" nil="true"/>
+    <private type="boolean">false</private>
+    <progress-meter type="integer">100</progress-meter>
+    <pts-for-bye type="decimal">1.0</pts-for-bye>
+    <pts-for-game-tie type="decimal">0.0</pts-for-game-tie>
+    <pts-for-game-win type="decimal">0.0</pts-for-game-win>
+    <pts-for-match-tie type="decimal">0.5</pts-for-match-tie>
+    <pts-for-match-win type="decimal">1.0</pts-for-match-win>
+    <quick-advance type="boolean">false</quick-advance>
+    <ranked-by>match wins</ranked-by>
+    <require-score-agreement type="boolean">false</require-score-agreement>
+    <rr-pts-for-game-tie type="decimal">0.0</rr-pts-for-game-tie>
+    <rr-pts-for-game-win type="decimal">0.0</rr-pts-for-game-win>
+    <rr-pts-for-match-tie type="decimal">0.5</rr-pts-for-match-tie>
+    <rr-pts-for-match-win type="decimal">1.0</rr-pts-for-match-win>
+    <sequential-pairings type="boolean">false</sequential-pairings>
+    <show-rounds type="boolean">true</show-rounds>
+    <signup-cap type="integer" nil="true"/>
+    <start-at type="datetime" nil="true"/>
+    <started-at type="datetime">2014-08-24T00:16:45+02:00</started-at>
+    <started-checking-in-at type="datetime" nil="true"/>
+    <state>complete</state>
+    <swiss-rounds type="integer">0</swiss-rounds>
+    <teams type="boolean">false</teams>
+    <tournament-type>double elimination</tournament-type>
+    <updated-at type="datetime">2014-08-24T22:54:59+02:00</updated-at>
+    <url>zlw6zcgv</url>
+    <description-source/>
+    <subdomain nil="true"/>
+    <full-challonge-url>http://challonge.com/zlw6zcgv</full-challonge-url>
+    <live-image-url>http://images.challonge.com/zlw6zcgv.png</live-image-url>
+    <sign-up-url nil="true"/>
+    <review-before-finalizing type="boolean">true</review-before-finalizing>
+  </tournament>
+  <tournament>
+    <accept-attachments type="boolean">false</accept-attachments>
+    <allow-participant-match-reporting type="boolean">true</allow-participant-match-reporting>
+    <anonymous-voting type="boolean">false</anonymous-voting>
+    <category nil="true"/>
+    <check-in-duration type="integer" nil="true"/>
+    <completed-at type="datetime">2014-08-24T19:34:57+02:00</completed-at>
+    <created-at type="datetime">2014-08-23T10:20:53+02:00</created-at>
+    <created-by-api type="boolean">false</created-by-api>
+    <credit-capped type="boolean">false</credit-capped>
+    <description/>
+    <enable-group-stage type="boolean">false</enable-group-stage>
+    <game-id type="integer">9673</game-id>
+    <hide-forum type="boolean">false</hide-forum>
+    <hide-seeds type="boolean">false</hide-seeds>
+    <hold-third-place-match type="boolean">false</hold-third-place-match>
+    <id type="integer">1165002</id>
+    <max-predictions-per-user type="integer">1</max-predictions-per-user>
+    <name>[24/08/14] LaDOSE.net - Ranking #6 - Karnov</name>
+    <notify-users-when-matches-open type="boolean">true</notify-users-when-matches-open>
+    <notify-users-when-the-tournament-ends type="boolean">true</notify-users-when-the-tournament-ends>
+    <open-signup type="boolean">false</open-signup>
+    <participant-count-to-advance-per-group type="integer" nil="true"/>
+    <participants-count type="integer">16</participants-count>
+    <prediction-method type="integer">0</prediction-method>
+    <predictions-opened-at type="datetime" nil="true"/>
+    <private type="boolean">false</private>
+    <progress-meter type="integer">100</progress-meter>
+    <pts-for-bye type="decimal">1.0</pts-for-bye>
+    <pts-for-game-tie type="decimal">0.0</pts-for-game-tie>
+    <pts-for-game-win type="decimal">0.0</pts-for-game-win>
+    <pts-for-match-tie type="decimal">0.5</pts-for-match-tie>
+    <pts-for-match-win type="decimal">1.0</pts-for-match-win>
+    <quick-advance type="boolean">false</quick-advance>
+    <ranked-by>match wins</ranked-by>
+    <require-score-agreement type="boolean">false</require-score-agreement>
+    <rr-pts-for-game-tie type="decimal">0.0</rr-pts-for-game-tie>
+    <rr-pts-for-game-win type="decimal">0.0</rr-pts-for-game-win>
+    <rr-pts-for-match-tie type="decimal">0.5</rr-pts-for-match-tie>
+    <rr-pts-for-match-win type="decimal">1.0</rr-pts-for-match-win>
+    <sequential-pairings type="boolean">false</sequential-pairings>
+    <show-rounds type="boolean">true</show-rounds>
+    <signup-cap type="integer" nil="true"/>
+    <start-at type="datetime" nil="true"/>
+    <started-at type="datetime">2014-08-24T00:17:32+02:00</started-at>
+    <started-checking-in-at type="datetime" nil="true"/>
+    <state>complete</state>
+    <swiss-rounds type="integer">0</swiss-rounds>
+    <teams type="boolean">false</teams>
+    <tournament-type>double elimination</tournament-type>
+    <updated-at type="datetime">2014-08-24T19:34:57+02:00</updated-at>
+    <url>rg82dd54</url>
+    <description-source/>
+    <subdomain nil="true"/>
+    <full-challonge-url>http://challonge.com/rg82dd54</full-challonge-url>
+    <live-image-url>http://images.challonge.com/rg82dd54.png</live-image-url>
+    <sign-up-url nil="true"/>
+    <review-before-finalizing type="boolean">true</review-before-finalizing>
+  </tournament>
+  <tournament>
+    <accept-attachments type="boolean">false</accept-attachments>
+    <allow-participant-match-reporting type="boolean">true</allow-participant-match-reporting>
+    <anonymous-voting type="boolean">false</anonymous-voting>
+    <category nil="true"/>
+    <check-in-duration type="integer" nil="true"/>
+    <completed-at type="datetime">2014-08-24T17:05:56+02:00</completed-at>
+    <created-at type="datetime">2014-08-23T10:21:16+02:00</created-at>
+    <created-by-api type="boolean">false</created-by-api>
+    <credit-capped type="boolean">false</credit-capped>
+    <description/>
+    <enable-group-stage type="boolean">false</enable-group-stage>
+    <game-id type="integer">394</game-id>
+    <hide-forum type="boolean">false</hide-forum>
+    <hide-seeds type="boolean">false</hide-seeds>
+    <hold-third-place-match type="boolean">false</hold-third-place-match>
+    <id type="integer">1165004</id>
+    <max-predictions-per-user type="integer">1</max-predictions-per-user>
+    <name>[24/08/14] LaDOSE.net - Ranking #6 - SSBM</name>
+    <notify-users-when-matches-open type="boolean">true</notify-users-when-matches-open>
+    <notify-users-when-the-tournament-ends type="boolean">true</notify-users-when-the-tournament-ends>
+    <open-signup type="boolean">false</open-signup>
+    <participant-count-to-advance-per-group type="integer" nil="true"/>
+    <participants-count type="integer">13</participants-count>
+    <prediction-method type="integer">0</prediction-method>
+    <predictions-opened-at type="datetime" nil="true"/>
+    <private type="boolean">false</private>
+    <progress-meter type="integer">100</progress-meter>
+    <pts-for-bye type="decimal">1.0</pts-for-bye>
+    <pts-for-game-tie type="decimal">0.0</pts-for-game-tie>
+    <pts-for-game-win type="decimal">0.0</pts-for-game-win>
+    <pts-for-match-tie type="decimal">0.5</pts-for-match-tie>
+    <pts-for-match-win type="decimal">1.0</pts-for-match-win>
+    <quick-advance type="boolean">false</quick-advance>
+    <ranked-by>match wins</ranked-by>
+    <require-score-agreement type="boolean">false</require-score-agreement>
+    <rr-pts-for-game-tie type="decimal">0.0</rr-pts-for-game-tie>
+    <rr-pts-for-game-win type="decimal">0.0</rr-pts-for-game-win>
+    <rr-pts-for-match-tie type="decimal">0.5</rr-pts-for-match-tie>
+    <rr-pts-for-match-win type="decimal">1.0</rr-pts-for-match-win>
+    <sequential-pairings type="boolean">false</sequential-pairings>
+    <show-rounds type="boolean">true</show-rounds>
+    <signup-cap type="integer" nil="true"/>
+    <start-at type="datetime" nil="true"/>
+    <started-at type="datetime">2014-08-24T13:36:31+02:00</started-at>
+    <started-checking-in-at type="datetime" nil="true"/>
+    <state>complete</state>
+    <swiss-rounds type="integer">0</swiss-rounds>
+    <teams type="boolean">false</teams>
+    <tournament-type>double elimination</tournament-type>
+    <updated-at type="datetime">2014-08-24T17:18:33+02:00</updated-at>
+    <url>1dgm6yi</url>
+    <description-source/>
+    <subdomain nil="true"/>
+    <full-challonge-url>http://challonge.com/1dgm6yi</full-challonge-url>
+    <live-image-url>http://images.challonge.com/1dgm6yi.png</live-image-url>
+    <sign-up-url nil="true"/>
+    <review-before-finalizing type="boolean">true</review-before-finalizing>
+  </tournament>
+</tournaments>
