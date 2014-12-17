@@ -137,7 +137,13 @@ namespace ChallongeManager
                         // Browse list of participants and for each, check if a line already exists. If it exists, update it. Else, create a new line
                         for (int j = 0; j < _tournamentsList[i].Participants.Count; j++)
                         {
-                            int playerIndex = resultsByPlayers.FindIndex(delegate(Player p) { return p.Name == _tournamentsList[i].Participants[j].Name; });
+                            string normalizedName = Tools.RemoveDiacritics(_tournamentsList[i].Participants[j].Name.ToLowerInvariant());
+                            int playerIndex = resultsByPlayers.FindIndex(delegate(Player p)
+                            {
+                                string normalizedPName = Tools.RemoveDiacritics(p.Name.ToLowerInvariant());
+                                return (normalizedPName.Contains(normalizedName)) ||
+                                      (normalizedName.Contains(normalizedPName));
+                            });
                             if (playerIndex != -1)
                             {
                                 resultsByPlayers[playerIndex].AddPoints(currentGame, _tournamentsList[i].Participants[j].EarnedPoints);                                
@@ -175,7 +181,14 @@ namespace ChallongeManager
                     // Browse list of participants and for each, check if a line already exists. If it exists, update it. Else, create a new line
                     for (int j = 0; j < consideredTournaments[i].Participants.Count; j++)
                     {
-                        int playerIndex = resultsByPlayers.FindIndex(delegate(Player p) { return p.Name == consideredTournaments[i].Participants[j].Name; });
+                        string normalizedName = Tools.RemoveDiacritics(consideredTournaments[i].Participants[j].Name.ToLowerInvariant());
+                        int playerIndex = resultsByPlayers.FindIndex(delegate(Player p)
+                        {
+                            string normalizedPName = Tools.RemoveDiacritics(p.Name.ToLowerInvariant());
+                            return (normalizedPName.Contains(normalizedName)) ||
+                                  (normalizedName.Contains(normalizedPName));
+                        });
+                        
                         if (playerIndex != -1)
                         {
                             resultsByPlayers[playerIndex].AddPoints(currentGame, consideredTournaments[i].Participants[j].EarnedPoints);
