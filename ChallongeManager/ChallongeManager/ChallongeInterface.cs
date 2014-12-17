@@ -708,13 +708,13 @@ namespace ChallongeManager
                 }
             }
 
-            _adjustedParticipantCount = participantscountField - _forfeitCount;
+            _adjustedParticipantCount = participantscountField;
 
             // Calculate points for each participant 
             for (int i = 0; i < inputData.participants[0].participant.Length; i++)
             {
                 wr_Participant newParticipant = new wr_Participant();
-                newParticipant.FillFromChallongeParticipant(inputData.participants[0].participant[i]);
+                newParticipant.FillFromChallongeParticipant(inputData.participants[0].participant[i]);                
                 // Calculate points
                 newParticipant.EarnedPoints = ChallongeInterface.CalculateParticipantPoints(_adjustedParticipantCount, newParticipant.Finalrank, !newParticipant.Active);
 
