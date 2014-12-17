@@ -23,5 +23,8 @@ SSBM</Value>
     <Setting Name="Challonge_SearchTag" Type="System.String" Scope="User">
       <Value Profile="(Default)">LaDOSE.net</Value>
     </Setting>
+    <Setting Name="ForfeitTag" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[FORFAIT]</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

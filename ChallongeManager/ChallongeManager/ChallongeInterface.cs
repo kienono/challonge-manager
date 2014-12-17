@@ -702,7 +702,7 @@ namespace ChallongeManager
             {
                 wr_Participant newParticipant = new wr_Participant();
                 newParticipant.FillFromChallongeParticipant(inputData.participants[0].participant[i]);
-                if (!newParticipant.Active)
+                if (newParticipant.Name.Contains(Settings.Default.ForfeitTag))
                 {
                     _forfeitCount++;
                 }
@@ -714,9 +714,22 @@ namespace ChallongeManager
             for (int i = 0; i < inputData.participants[0].participant.Length; i++)
             {
                 wr_Participant newParticipant = new wr_Participant();
-                newParticipant.FillFromChallongeParticipant(inputData.participants[0].participant[i]);                
+                newParticipant.FillFromChallongeParticipant(inputData.participants[0].participant[i]);
+                
+                // Check if forfeit
+                bool isForfeit = false;
+                if (newParticipant.Name.Contains(Settings.Default.ForfeitTag))
+                {
+                    // Tag found --> forfeiting
+                    isForfeit = true;
+                }
+                else
+                {
+                    // No tag found --> early quit
+                }
+
                 // Calculate points
-                newParticipant.EarnedPoints = ChallongeInterface.CalculateParticipantPoints(_adjustedParticipantCount, newParticipant.Finalrank, !newParticipant.Active);
+                newParticipant.EarnedPoints = ChallongeInterface.CalculateParticipantPoints(_adjustedParticipantCount, newParticipant.Finalrank, isForfeit);
 
                 participantsField.Add(newParticipant);
             }
@@ -744,7 +757,7 @@ Resultats:", nameField, completeDateField, participantscountField, _forfeitCount
             for (int i = 0; i < participantsField.Count; i++)
             {
                 resultsRanking += string.Format("    #{0} {1} ({2} pts)", participantsField[i].Finalrank, participantsField[i].Name, participantsField[i].EarnedPoints);
-                if (!participantsField[i].Active)
+                if (participantsField[i].Name.Contains(Settings.Default.ForfeitTag))
                 {
                     resultsRanking += " [Forfait]";
                 }

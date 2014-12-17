@@ -71,5 +71,17 @@ namespace ChallongeManager.Properties {
                 this["Challonge_SearchTag"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("[FORFAIT]")]
+        public string ForfeitTag {
+            get {
+                return ((string)(this["ForfeitTag"]));
+            }
+            set {
+                this["ForfeitTag"] = value;
+            }
+        }
     }
 }
