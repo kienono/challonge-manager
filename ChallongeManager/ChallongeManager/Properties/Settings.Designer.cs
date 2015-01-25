@@ -37,7 +37,7 @@ namespace ChallongeManager.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("UKvLMpJWWoSY3YDAfM6fCUADjxaNqJ4bpLncrfMP")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string Challonge_APIkey {
             get {
                 return ((string)(this["Challonge_APIkey"]));
@@ -62,7 +62,7 @@ namespace ChallongeManager.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("LaDOSE.net")]
+        [global::System.Configuration.DefaultSettingValueAttribute("LaDOSE.net - Ranking")]
         public string Challonge_SearchTag {
             get {
                 return ((string)(this["Challonge_SearchTag"]));

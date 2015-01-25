@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("ChallongeManager")]
-[assembly: AssemblyCopyright("Copyright A.Chansavang©  2014")]
+[assembly: AssemblyCopyright("Copyright A.Chansavang©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
