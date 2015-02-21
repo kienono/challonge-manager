@@ -754,9 +754,12 @@ namespace ChallongeManager
                     // No tag found --> check in participant structure
                     isForfeit = !newParticipant.Active;
                 }
-
+                
                 // Calculate points
                 newParticipant.EarnedPoints = ChallongeInterface.CalculateParticipantPoints(_adjustedParticipantCount, newParticipant.Finalrank, isForfeit);
+
+                // Remove forfeit tag from name before saving
+                newParticipant.RemoveForfeitTag();
 
                 participantsField.Add(newParticipant);
             }
@@ -874,6 +877,11 @@ Resultats:", nameField, completeDateField, participantscountField, _forfeitCount
             seedField = int.Parse(inputData.seed[0].Value);
 
             tournamentIdField = inputData.tournamentid[0].Value;
+        }
+
+        public void RemoveForfeitTag()
+        {
+            nameField = nameField.Replace(Settings.Default.ForfeitTag, "").Trim();            
         }
         #endregion
 
