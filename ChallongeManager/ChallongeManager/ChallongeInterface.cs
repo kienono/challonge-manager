@@ -715,7 +715,20 @@ namespace ChallongeManager
             {
                 wr_Participant newParticipant = new wr_Participant();
                 newParticipant.FillFromChallongeParticipant(inputData.participants[0].participant[i]);
+                // Check if forfeit
+                bool isForfeit = false;
                 if (newParticipant.Name.Contains(Settings.Default.ForfeitTag))
+                {
+                    // Tag found --> forfeiting
+                    isForfeit = true;
+                }
+                else
+                {
+                    // No tag found --> check in participant structure
+                    isForfeit = !newParticipant.Active;
+                }
+
+                if (isForfeit)
                 {
                     _forfeitCount++;
                 }
@@ -738,7 +751,8 @@ namespace ChallongeManager
                 }
                 else
                 {
-                    // No tag found --> early quit
+                    // No tag found --> check in participant structure
+                    isForfeit = !newParticipant.Active;
                 }
 
                 // Calculate points
@@ -770,7 +784,7 @@ Resultats:", nameField, completeDateField, participantscountField, _forfeitCount
             for (int i = 0; i < participantsField.Count; i++)
             {
                 resultsRanking += string.Format("    #{0} {1} ({2} pts)", participantsField[i].Finalrank, participantsField[i].Name, participantsField[i].EarnedPoints);
-                if (participantsField[i].Name.Contains(Settings.Default.ForfeitTag))
+                if (participantsField[i].Name.Contains(Settings.Default.ForfeitTag) || !participantsField[i].Active)
                 {
                     resultsRanking += " [Forfait]";
                 }
