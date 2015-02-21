@@ -52,6 +52,7 @@
             this.quitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.parametresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonCopy = new System.Windows.Forms.Button();
             this.groupBoxDataRetrieval.SuspendLayout();
             this.groupBoxResults.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -147,6 +148,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxResults.Controls.Add(this.buttonUpdateTable);
             this.groupBoxResults.Controls.Add(this.textBoxTournamentDetails);
+            this.groupBoxResults.Controls.Add(this.buttonCopy);
             this.groupBoxResults.Controls.Add(this.buttonExtractToCSV);
             this.groupBoxResults.Controls.Add(this.listViewPoints);
             this.groupBoxResults.Controls.Add(this.checkedListBoxTournois);
@@ -172,11 +174,11 @@
             // textBoxTournamentDetails
             // 
             this.textBoxTournamentDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxTournamentDetails.Location = new System.Drawing.Point(377, 38);
+            this.textBoxTournamentDetails.Location = new System.Drawing.Point(337, 38);
             this.textBoxTournamentDetails.Multiline = true;
             this.textBoxTournamentDetails.Name = "textBoxTournamentDetails";
             this.textBoxTournamentDetails.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxTournamentDetails.Size = new System.Drawing.Size(320, 116);
+            this.textBoxTournamentDetails.Size = new System.Drawing.Size(360, 116);
             this.textBoxTournamentDetails.TabIndex = 5;
             this.textBoxTournamentDetails.WordWrap = false;
             // 
@@ -212,7 +214,7 @@
             this.checkedListBoxTournois.FormattingEnabled = true;
             this.checkedListBoxTournois.Location = new System.Drawing.Point(11, 38);
             this.checkedListBoxTournois.Name = "checkedListBoxTournois";
-            this.checkedListBoxTournois.Size = new System.Drawing.Size(360, 116);
+            this.checkedListBoxTournois.Size = new System.Drawing.Size(320, 116);
             this.checkedListBoxTournois.TabIndex = 2;
             this.checkedListBoxTournois.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxTournois_SelectedIndexChanged);
             // 
@@ -279,6 +281,17 @@
             this.parametresToolStripMenuItem.Text = "&Paramètres";
             this.parametresToolStripMenuItem.Click += new System.EventHandler(this.parametresToolStripMenuItem_Click);
             // 
+            // buttonCopy
+            // 
+            this.buttonCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonCopy.Location = new System.Drawing.Point(150, 441);
+            this.buttonCopy.Name = "buttonCopy";
+            this.buttonCopy.Size = new System.Drawing.Size(181, 23);
+            this.buttonCopy.TabIndex = 4;
+            this.buttonCopy.Text = "Copier dans le presse papier";
+            this.buttonCopy.UseVisualStyleBackColor = true;
+            this.buttonCopy.Click += new System.EventHandler(this.buttonCopy_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -328,6 +341,7 @@
         private System.Windows.Forms.ToolStripMenuItem parametresToolStripMenuItem;
         private System.Windows.Forms.TextBox textBoxTournamentDetails;
         private System.Windows.Forms.Button buttonUpdateTable;
+        private System.Windows.Forms.Button buttonCopy;
     }
 }
 
