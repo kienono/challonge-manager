@@ -734,7 +734,7 @@ namespace ChallongeManager
                 }
             }
 
-            _adjustedParticipantCount = participantscountField;
+            _adjustedParticipantCount = participantscountField - _forfeitCount;
 
             // Calculate points for each participant 
             for (int i = 0; i < inputData.participants[0].participant.Length; i++)
