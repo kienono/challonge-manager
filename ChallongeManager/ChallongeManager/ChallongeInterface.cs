@@ -141,8 +141,18 @@ namespace ChallongeManager
                             int playerIndex = resultsByPlayers.FindIndex(delegate(Player p)
                             {
                                 string normalizedPName = Tools.RemoveDiacritics(p.Name.ToLowerInvariant());
-                                return (normalizedPName.Contains(normalizedName)) ||
-                                      (normalizedName.Contains(normalizedPName));
+                                bool refNameInP = false;
+                                bool pInRefName = false;
+                                bool exactMatch = false;
+
+                                List<string> refNameElements = new List<string>(normalizedName.Split(new string[] { "|", " ", ";" }, StringSplitOptions.RemoveEmptyEntries));
+                                List<string> pElements = new List<string>(normalizedPName.Split(new string[] { "|", " ", ";" }, StringSplitOptions.RemoveEmptyEntries));
+
+                                refNameInP = pElements.Contains(normalizedName);
+                                pInRefName = refNameElements.Contains(normalizedPName);
+                                exactMatch = (normalizedName == normalizedPName);
+
+                                return refNameInP || pInRefName || exactMatch;
                             });
                             if (playerIndex != -1)
                             {
@@ -185,8 +195,18 @@ namespace ChallongeManager
                         int playerIndex = resultsByPlayers.FindIndex(delegate(Player p)
                         {
                             string normalizedPName = Tools.RemoveDiacritics(p.Name.ToLowerInvariant());
-                            return (normalizedPName.Contains(normalizedName)) ||
-                                  (normalizedName.Contains(normalizedPName));
+                            bool refNameInP = false;
+                            bool pInRefName = false;
+                            bool exactMatch = false;
+
+                            List<string> refNameElements = new List<string>(normalizedName.Split(new string[] { "|", " ", ";" }, StringSplitOptions.RemoveEmptyEntries));
+                            List<string> pElements = new List<string>(normalizedPName.Split(new string[] { "|", " ", ";" }, StringSplitOptions.RemoveEmptyEntries));
+
+                            refNameInP = pElements.Contains(normalizedName);
+                            pInRefName = refNameElements.Contains(normalizedPName);
+                            exactMatch = (normalizedName == normalizedPName);
+
+                            return refNameInP || pInRefName || exactMatch;
                         });
                         
                         if (playerIndex != -1)
