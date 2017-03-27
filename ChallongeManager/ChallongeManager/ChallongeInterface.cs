@@ -9,7 +9,7 @@ using System.Xml;
 
 namespace ChallongeManager
 {
-    public class ChallongeInterface
+    internal class ChallongeInterface
     {
         #region Fields
         private List<wr_Tournament> _tournamentsList = new List<wr_Tournament>();
@@ -114,6 +114,170 @@ namespace ChallongeManager
             return ret;
         }
 
+        public bool GetEventTournaments(DateTime eventDate, string tag, out List<wr_Tournament> resultList)
+        {
+            bool ret = false;
+
+            resultList = new List<wr_Tournament>();
+            // date consistency ok, retrieve data
+
+            // First retrieve tournaments list
+            string tournamentListRequest = string.Format("https://{0}:{1}@api.challonge.com/v1/tournaments.xml?created_after={2}&created_before={3}",
+                                                            Settings.Default.Challonge_ID,
+                                                            Settings.Default.Challonge_APIkey,
+                                                            eventDate.AddDays(-7).ToString("yyyy-MM-dd"),
+                                                            eventDate.AddDays(2).ToString("yyyy-MM-dd"));
+            WebRequest request = WebRequest.Create(tournamentListRequest);
+            System.Net.NetworkCredential netCredential = new System.Net.NetworkCredential(Settings.Default.Challonge_ID, Settings.Default.Challonge_APIkey, "");
+            request.Credentials = netCredential;
+
+            WebResponse response = request.GetResponse();
+            Stream dataStream = response.GetResponseStream();
+
+            XmlSerializer ser = new XmlSerializer(typeof(tournaments));
+            tournaments reqTournamentList;
+            using (XmlReader xmlreader = XmlReader.Create(dataStream))
+            {
+                reqTournamentList = (tournaments)ser.Deserialize(xmlreader);
+            }
+            response.Close();
+
+            // Then fill in each tournaments complying with search tag and date
+            for (int i = 0; i < reqTournamentList.tournament.Length; i++)
+            {
+                if (reqTournamentList.tournament[i].name.Contains(tag) &&
+                    (reqTournamentList.tournament[i].state == "complete") &&
+                    (reqTournamentList.tournament[i].completedat[0].Value.Contains(eventDate.ToString("yyyy-MM-dd"))) &&
+                    ((reqTournamentList.tournament[i].tournamenttype == "single elimination") || (reqTournamentList.tournament[i].tournamenttype == "double elimination")))
+                {
+                    string currentTournamentID = reqTournamentList.tournament[i].id[0].Value;
+                    string tournamentRequest = string.Format("https://{0}:{1}@api.challonge.com/v1/tournaments/{2}.xml?include_participants=1&include_matches=1",
+                                                                Settings.Default.Challonge_ID,
+                                                                Settings.Default.Challonge_APIkey,
+                                                                currentTournamentID);
+                    WebRequest requestTournament = WebRequest.Create(tournamentRequest);
+                    requestTournament.Credentials = netCredential;
+
+                    WebResponse responseTournament = requestTournament.GetResponse();
+                    dataStream = responseTournament.GetResponseStream();
+
+                    XmlSerializer serTournament = new XmlSerializer(typeof(tournament));
+                    tournament currentTournament;
+                    using (XmlReader xmlreader = XmlReader.Create(dataStream))
+                    {
+                        currentTournament = (tournament)serTournament.Deserialize(xmlreader);
+                    }
+                    responseTournament.Close();
+
+                    wr_Tournament newTournament = new wr_Tournament();
+                    newTournament.FillFromChallongeTournament(currentTournament);
+                    resultList.Add(newTournament);
+                }
+            }
+
+            ret = resultList.Count > 0;
+
+            return ret;
+        }
+
+        public bool GetTournamentData(string tournamentID, out tournamentEventDoubleElimBracket retrievedTournament)
+        {
+            bool ret = false;
+            wr_Tournament retrievedWrTournament = new wr_Tournament();
+            retrievedTournament = new tournamentEventDoubleElimBracket();
+
+            try
+            {
+                string tournamentRequest = string.Format("https://{0}:{1}@api.challonge.com/v1/tournaments/{2}.xml?include_participants=1&include_matches=1",
+                                                        Settings.Default.Challonge_ID,
+                                                        Settings.Default.Challonge_APIkey,
+                                                        tournamentID);
+                WebRequest requestTournament = WebRequest.Create(tournamentRequest);
+                System.Net.NetworkCredential netCredential = new System.Net.NetworkCredential(Settings.Default.Challonge_ID, Settings.Default.Challonge_APIkey, "");
+                requestTournament.Credentials = netCredential;
+
+                WebResponse responseTournament = requestTournament.GetResponse();
+                Stream dataStream = responseTournament.GetResponseStream();
+
+                XmlSerializer serTournament = new XmlSerializer(typeof(tournament));
+                tournament currentTournament;
+                using (XmlReader xmlreader = XmlReader.Create(dataStream))
+                {
+                    currentTournament = (tournament)serTournament.Deserialize(xmlreader);
+                }
+                responseTournament.Close();
+
+                retrievedWrTournament.FillFromChallongeTournament(currentTournament);
+
+                retrievedTournament = new tournamentEventDoubleElimBracket();
+
+                for (int i = 0; i < retrievedWrTournament.Participantscount; i++)
+                {
+                    retrievedTournament.AddParticipant(new Participant(int.Parse(retrievedWrTournament.Participants[i].Id), retrievedWrTournament.Participants[i].Name));
+                }
+
+                Dictionary<int, wr_Match> matchesPool = new Dictionary<int, wr_Match>();
+
+                // Look for last match
+                List<int> allPrereqMatchesIdList = new List<int>();
+                List<wr_Match> firstMatchesList = new List<wr_Match>();
+                for (int i = 0; i < retrievedWrTournament.Matches.Count; i++)
+                {
+                    int player1PrereqId = -1;
+                    if (int.TryParse(retrievedWrTournament.Matches[i].Player1PrereqMatchIdField, out player1PrereqId))
+                    {
+                        if (!allPrereqMatchesIdList.Contains(player1PrereqId))
+                        {
+                            allPrereqMatchesIdList.Add(player1PrereqId);
+                        }
+                    }
+
+                    int player2PrereqId = -1;
+                    if (int.TryParse(retrievedWrTournament.Matches[i].Player2PrereqMatchIdField, out player2PrereqId))
+                    {
+                        if (!allPrereqMatchesIdList.Contains(player2PrereqId))
+                        {
+                            allPrereqMatchesIdList.Add(player2PrereqId);
+                        }
+                    }
+
+                    if ((retrievedWrTournament.Matches[i].Player1PrereqMatchIdField == null) && (retrievedWrTournament.Matches[i].Player2PrereqMatchIdField == null))
+                    {
+                        firstMatchesList.Add(retrievedWrTournament.Matches[i]);
+                    }
+
+                    int currentMatchId;
+                    int.TryParse(retrievedWrTournament.Matches[i].Id, out currentMatchId);
+                    if (!matchesPool.ContainsKey(currentMatchId))
+                    {
+                        matchesPool.Add(currentMatchId, retrievedWrTournament.Matches[i]);
+                    }
+                }
+
+                // Last match is the only match that is not a prereq match, use it as a base for adding recursively all the matches
+                int lastMatchId = -1;
+                for (int i = 0; (i < retrievedWrTournament.Matches.Count) && (lastMatchId == -1); i++)
+                {
+                    if (!allPrereqMatchesIdList.Contains(int.Parse(retrievedWrTournament.Matches[i].Id)))
+                    {
+                        lastMatchId = int.Parse(retrievedWrTournament.Matches[i].Id);
+                    }
+                }
+                // Add matches recursively from last match to first round
+                retrievedTournament.InitializeTournament(matchesPool, lastMatchId);                
+
+                ret = true;
+            }
+            catch (Exception ex)
+            {
+
+                //throw;
+            }
+            
+
+            return ret;
+        }
+       
         public bool GetResults(List<string> consideredTournaments,
                                 out List<Player> resultsByPlayers)
         {
@@ -721,8 +885,8 @@ namespace ChallongeManager
             fullchallongeurlField = inputData.fullchallongeurl;
             liveimageurlField = inputData.liveimageurl;
             categoryField = inputData.category[0].nil;
-            completeDateField = DateTime.Parse(inputData.completedat[0].Value);
-            createDateField = DateTime.Parse(inputData.createdat[0].Value);
+            completeDateField = inputData.completedat[0].Value != null ? DateTime.Parse(inputData.completedat[0].Value) : DateTime.MinValue;
+            createDateField = inputData.createdat[0].Value != null ? DateTime.Parse(inputData.createdat[0].Value) : DateTime.MinValue;
             gameidField = inputData.gameid[0].nil;
             idField = inputData.id[0].Value;
             participantscountField = int.Parse(inputData.participantscount[0].Value);
@@ -787,14 +951,17 @@ namespace ChallongeManager
             participantsField.Sort();
 
             matchesField = new List<wr_Match>();
-            for (int i = 0; i < inputData.matches[0].match.Length; i++)
+            if (inputData.matches[0].match != null)
             {
-                wr_Match newMatch = new wr_Match();
-                newMatch.FillFromChallongeMatch(inputData.matches[0].match[i]);
-                matchesField.Add(newMatch);
-            }
-            // Sort matches by date
-            matchesField.Sort(new wr_MatchList_DateSorter());
+                for (int i = 0; i < inputData.matches[0].match.Length; i++)
+                {
+                    wr_Match newMatch = new wr_Match();
+                    newMatch.FillFromChallongeMatch(inputData.matches[0].match[i]);
+                    matchesField.Add(newMatch);
+                }
+                // Sort matches by date
+                matchesField.Sort(new wr_MatchList_DateSorter());
+            }            
         }
 
         public string GetTournamentDetails()
@@ -816,6 +983,30 @@ Resultats:", nameField, completeDateField, participantscountField, _forfeitCount
 
             tournamentDetails += Environment.NewLine + resultsRanking;
             return tournamentDetails;
+        }
+
+        public string GetTournamentResultsHTML(string title, int colspan, int width)
+        {
+            string output = "";
+            if (participantscountField >0)
+            {
+                output = string.Format("<td colspan = \"{6}\" width=\"{7} % \"><span style=\"color: #ff0000;\"><strong>{0} ({1} participants) :</strong></span><br/>" + Environment.NewLine +
+            "1 / {2}<br/>" + Environment.NewLine +
+             "2 / {3}<br/>" + Environment.NewLine +
+              "3 / {4}<br/>" + Environment.NewLine +
+              Environment.NewLine +
+              "<a href = \"{5}\" target = \"_blank\">{5}</a></td>" + Environment.NewLine,
+              title,
+              Participantscount,
+              participantsField[0].Name,
+              participantsField[1].Name,
+              participantsField[2].Name,
+              Fullchallongeurl,
+              colspan,
+              width);
+            }
+
+            return output;
         }
         #endregion
 
@@ -890,7 +1081,7 @@ Resultats:", nameField, completeDateField, participantscountField, _forfeitCount
 
             activeField = bool.Parse(inputData.active[0].Value);
 
-            finalrankField = int.Parse(inputData.finalrank[0].Value);
+            finalrankField = inputData.finalrank[0].Value != null ? int.Parse(inputData.finalrank[0].Value) : -1;
 
             idField = inputData.id[0].Value;
 
@@ -949,6 +1140,15 @@ Resultats:", nameField, completeDateField, participantscountField, _forfeitCount
         private string tournamentidField;
 
         private DateTime updatedateField;
+
+        private string player1PrereqMatchIdField;
+
+        private string player2PrereqMatchIdField;
+
+        private string player1IsPrereqMatchLooserField;
+
+        private string player2IsPrereqMatchLooserField;
+        
         #endregion
 
         #region Properties
@@ -1011,6 +1211,38 @@ Resultats:", nameField, completeDateField, participantscountField, _forfeitCount
         {
             get { return updatedateField; }
         }
+
+        public string Player1PrereqMatchIdField
+        {
+            get
+            {
+                return player1PrereqMatchIdField;
+            }
+        }
+
+        public string Player2PrereqMatchIdField
+        {
+            get
+            {
+                return player2PrereqMatchIdField;
+            }
+        }
+
+        public string Player1IsPrereqMatchLooserField
+        {
+            get
+            {
+                return player1IsPrereqMatchLooserField;
+            }
+        }
+
+        public string Player2IsPrereqMatchLooserField
+        {
+            get
+            {
+                return player2IsPrereqMatchLooserField;
+            }
+        }
         #endregion
 
         #region Methods
@@ -1039,6 +1271,14 @@ Resultats:", nameField, completeDateField, participantscountField, _forfeitCount
             tournamentidField = inputData.tournamentid[0].Value;
 
             updatedateField = DateTime.Parse(inputData.updatedat[0].Value);
+
+            player1PrereqMatchIdField = inputData.player1prereqmatchid[0].Value;
+
+            player2PrereqMatchIdField = inputData.player2prereqmatchid[0].Value;
+
+            player1IsPrereqMatchLooserField = inputData.player1isprereqmatchloser[0].Value;
+
+            player2IsPrereqMatchLooserField = inputData.player2isprereqmatchloser[0].Value;
         }
         #endregion
     }

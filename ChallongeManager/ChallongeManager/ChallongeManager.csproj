@@ -52,17 +52,45 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormEventManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEventManager.Designer.cs">
+      <DependentUpon>FormEventManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormResultTableGenerator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormResultTableGenerator.Designer.cs">
+      <DependentUpon>FormResultTableGenerator.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormSettings.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FormSettings.Designer.cs">
       <DependentUpon>FormSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="matchStation.cs" />
+    <Compile Include="matchStationGroup.cs" />
+    <Compile Include="Participant.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TournamentMatchControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TournamentMatchControl.Designer.cs">
+      <DependentUpon>TournamentMatchControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="tournamentVenue.cs" />
     <EmbeddedResource Include="Form1.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEventManager.resx">
+      <DependentUpon>FormEventManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormResultTableGenerator.resx">
+      <DependentUpon>FormResultTableGenerator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormSettings.resx">
       <SubType>Designer</SubType>
@@ -78,6 +106,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TournamentMatchControl.resx">
+      <DependentUpon>TournamentMatchControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -88,7 +119,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="SingleParticipant.cs" />
+    <Compile Include="TeamParticipant.cs" />
     <Compile Include="Tools.cs" />
+    <Compile Include="tournamentEvent.cs" />
+    <Compile Include="tournamentMatch.cs" />
     <Compile Include="tournaments.cs" />
   </ItemGroup>
   <ItemGroup>

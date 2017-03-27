@@ -23,5 +23,19 @@ namespace ChallongeManager
 
             return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
         }
+
+        static string charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        public static int GetDigitValue(char digit)
+        {
+            return charset.IndexOf(digit)+1;
+        }
+        public static int ConvertFromBase26(string number)
+        {
+            int result = 0;
+            foreach (char digit in number)
+                result = result * charset.Length + GetDigitValue(digit);
+
+            return result;
+        }
     }
 }
