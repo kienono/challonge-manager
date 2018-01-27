@@ -410,7 +410,7 @@ namespace ChallongeManager
             }
             else
             {
-                if (tournamentParticipantsNumber < 8)
+                if (tournamentParticipantsNumber <= 8)
                 {
                     if (finalRank == 1)
                     {
@@ -429,7 +429,7 @@ namespace ChallongeManager
                         ret = 1;
                     }
                 }
-                else if (tournamentParticipantsNumber < 16)
+                else if (tournamentParticipantsNumber <= 16)
                 {
                     if (finalRank == 1)
                     {
@@ -452,7 +452,7 @@ namespace ChallongeManager
                         ret = 1;
                     }
                 }
-                else if (tournamentParticipantsNumber < 32)
+                else if (tournamentParticipantsNumber <= 32)
                 {
                     if (finalRank == 1)
                     {

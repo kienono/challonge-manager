@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("ChallongeManager")]
-[assembly: AssemblyCopyright("Copyright A.Chansavang©  2017")]
+[assembly: AssemblyCopyright("Copyright A.Chansavang©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //      Numéro de build
 //      Révision
 //
-[assembly: AssemblyVersion("1.5")]
-[assembly: AssemblyFileVersion("1.5")]
+[assembly: AssemblyVersion("1.6")]
+[assembly: AssemblyFileVersion("1.6")]

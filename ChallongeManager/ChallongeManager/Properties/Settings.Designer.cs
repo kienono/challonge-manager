@@ -49,8 +49,8 @@ namespace ChallongeManager.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2X\r\n3rd Strike/3.3\r\nCvS2/CVS2\r\nSSFIV/SSF4/USF4/USFIV/SF4\r\nGarou\r\nKoF98/KOF 98\r\nKo" +
-            "F13/KOF XIII/ KOF 13\r\nKarnov\r\nGGXrd/GG3/XRD\r\nSSBM")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2X\r\n3rd Strike/3.3\r\nSFVAE/SFV/SF5/SF5AE\r\nVampire\r\nTekken 7/T7\r\nDBFZ/DBZ/Dragon Ba" +
+            "ll FighterZ\r\nGGXrd/XRD\r\nGarou\r\nKarnov\r\n")]
         public string Challonge_GameList {
             get {
                 return ((string)(this["Challonge_GameList"]));
@@ -81,6 +81,18 @@ namespace ChallongeManager.Properties {
             }
             set {
                 this["ForfeitTag"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SeasonGame {
+            get {
+                return ((string)(this["SeasonGame"]));
+            }
+            set {
+                this["SeasonGame"] = value;
             }
         }
     }

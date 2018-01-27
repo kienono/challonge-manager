@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChallongeManager.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -62,11 +63,12 @@ namespace ChallongeManager
             string ssf2x_Code = "";
             string sf3_Code = "";
             string karnov_Code = "";
-            string usf4_Code = "";
+            string dbfz_Code = "";
             string sf5_Code = "";
             string ggx_Code = "";
             string garou_Code = "";
-            string vampire_Code = "";
+            string vampire_Code = "";            
+            string t7_Code = "";
             string season_Code = "";
 
             for (int i = 0; i < resultList.Count; i++)
@@ -79,9 +81,9 @@ namespace ChallongeManager
                 {
                     sf3_Code = resultList[i].GetTournamentResultsHTML("3.3", 1, 50);
                 }
-                else if (resultList[i].Name.Contains("USF4"))
+                else if (resultList[i].Name.Contains("DBFZ"))
                 {
-                    usf4_Code = resultList[i].GetTournamentResultsHTML("USF4", 1, 50);
+                    dbfz_Code = resultList[i].GetTournamentResultsHTML("DBFZ", 1, 50);
                 }
                 else if (resultList[i].Name.Contains("SFV"))
                 {
@@ -103,9 +105,13 @@ namespace ChallongeManager
                 {
                     karnov_Code = resultList[i].GetTournamentResultsHTML("Karnov", 1, 50);
                 }
+                else if (resultList[i].Name.Contains("Tekken 7"))
+                {
+                    t7_Code = resultList[i].GetTournamentResultsHTML("Tekken 7", 2, 100);
+                }
                 else
                 {
-                    season_Code = resultList[i].GetTournamentResultsHTML("Season Game : Fighting Layer", 2, 100);
+                    season_Code = resultList[i].GetTournamentResultsHTML("Season Game : " + Settings.Default.SeasonGame, 2, 100);
                 }
             }
 
@@ -115,9 +121,9 @@ namespace ChallongeManager
         ssf2x_Code +
         sf3_Code+
     "</tr> " + Environment.NewLine +
-    "<tr> " + Environment.NewLine +
-        usf4_Code+
+    "<tr> " + Environment.NewLine +       
         sf5_Code+
+        t7_Code +
     "</tr> " +Environment.NewLine +
     "<tr> " + Environment.NewLine +
         vampire_Code+
@@ -126,6 +132,9 @@ namespace ChallongeManager
     "<tr>" + Environment.NewLine +
         karnov_Code+
         ggx_Code+
+    "</tr>" + Environment.NewLine +
+    "<tr>" + Environment.NewLine +
+        dbfz_Code +
     "</tr>" + Environment.NewLine +
     "<tr>" + Environment.NewLine +
         season_Code+

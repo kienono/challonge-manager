@@ -11,20 +11,23 @@
     <Setting Name="Challonge_GameList" Type="System.String" Scope="User">
       <Value Profile="(Default)">2X
 3rd Strike/3.3
-CvS2/CVS2
-SSFIV/SSF4/USF4/USFIV/SF4
+SFVAE/SFV/SF5/SF5AE
+Vampire
+Tekken 7/T7
+DBFZ/DBZ/Dragon Ball FighterZ
+GGXrd/XRD
 Garou
-KoF98/KOF 98
-KoF13/KOF XIII/ KOF 13
 Karnov
-GGXrd/GG3/XRD
-SSBM</Value>
+</Value>
     </Setting>
     <Setting Name="Challonge_SearchTag" Type="System.String" Scope="User">
       <Value Profile="(Default)">LaDOSE.net - Ranking</Value>
     </Setting>
     <Setting Name="ForfeitTag" Type="System.String" Scope="User">
       <Value Profile="(Default)">[FORFAIT]</Value>
+    </Setting>
+    <Setting Name="SeasonGame" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>
