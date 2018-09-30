@@ -77,38 +77,41 @@ namespace ChallongeManager
                 }
                 response.Close();
 
-                // Then fill in each tournaments complying with search tag
-                for (int i = 0; i < reqTournamentList.tournament.Length; i++)
+                if (reqTournamentList.tournament != null)
                 {
-                    if (reqTournamentList.tournament[i].name.Contains(Settings.Default.Challonge_SearchTag) &&
-                        (reqTournamentList.tournament[i].state == "complete")  &&
-                        ((reqTournamentList.tournament[i].tournamenttype == "single elimination") || (reqTournamentList.tournament[i].tournamenttype == "double elimination")))
+                    // Then fill in each tournaments complying with search tag
+                    for (int i = 0; i < reqTournamentList.tournament.Length; i++)
                     {
-                        string currentTournamentID = reqTournamentList.tournament[i].id[0].Value;
-                        string tournamentRequest = string.Format("https://{0}:{1}@api.challonge.com/v1/tournaments/{2}.xml?include_participants=1&include_matches=1",
-                                                                    Settings.Default.Challonge_ID,
-                                                                    Settings.Default.Challonge_APIkey,
-                                                                    currentTournamentID);
-                        WebRequest requestTournament = WebRequest.Create(tournamentRequest);
-                        requestTournament.Credentials = netCredential;
-
-                        WebResponse responseTournament = requestTournament.GetResponse();
-                        dataStream = responseTournament.GetResponseStream();
-
-                        XmlSerializer serTournament = new XmlSerializer(typeof(tournament));
-                        tournament currentTournament;
-                        using (XmlReader xmlreader = XmlReader.Create(dataStream))
+                        if (reqTournamentList.tournament[i].name.Contains(Settings.Default.Challonge_SearchTag) &&
+                            (reqTournamentList.tournament[i].state == "complete") &&
+                            ((reqTournamentList.tournament[i].tournamenttype == "single elimination") || (reqTournamentList.tournament[i].tournamenttype == "double elimination")))
                         {
-                            currentTournament = (tournament)serTournament.Deserialize(xmlreader);
-                        }
-                        responseTournament.Close();
+                            string currentTournamentID = reqTournamentList.tournament[i].id[0].Value;
+                            string tournamentRequest = string.Format("https://{0}:{1}@api.challonge.com/v1/tournaments/{2}.xml?include_participants=1&include_matches=1",
+                                                                        Settings.Default.Challonge_ID,
+                                                                        Settings.Default.Challonge_APIkey,
+                                                                        currentTournamentID);
+                            WebRequest requestTournament = WebRequest.Create(tournamentRequest);
+                            requestTournament.Credentials = netCredential;
 
-                        wr_Tournament newTournament = new wr_Tournament();
-                        newTournament.FillFromChallongeTournament(currentTournament);
-                        _tournamentsList.Add(newTournament);
+                            WebResponse responseTournament = requestTournament.GetResponse();
+                            dataStream = responseTournament.GetResponseStream();
+
+                            XmlSerializer serTournament = new XmlSerializer(typeof(tournament));
+                            tournament currentTournament;
+                            using (XmlReader xmlreader = XmlReader.Create(dataStream))
+                            {
+                                currentTournament = (tournament)serTournament.Deserialize(xmlreader);
+                            }
+                            responseTournament.Close();
+
+                            wr_Tournament newTournament = new wr_Tournament();
+                            newTournament.FillFromChallongeTournament(currentTournament);
+                            _tournamentsList.Add(newTournament);
+                        }
                     }
                 }
-
+                
                 ret = _tournamentsList.Count > 0;
             }
             return ret;
@@ -147,7 +150,7 @@ namespace ChallongeManager
             {
                 if (reqTournamentList.tournament[i].name.Contains(tag) &&
                     (reqTournamentList.tournament[i].state == "complete") &&
-                    (reqTournamentList.tournament[i].completedat[0].Value.Contains(eventDate.ToString("yyyy-MM-dd"))) &&
+                    ((reqTournamentList.tournament[i].completedat[0].Value.Contains(eventDate.ToString("yyyy-MM-dd"))) || (reqTournamentList.tournament[i].completedat[0].Value.Contains(eventDate.AddDays(1).ToString("yyyy-MM-dd"))))&&
                     ((reqTournamentList.tournament[i].tournamenttype == "single elimination") || (reqTournamentList.tournament[i].tournamenttype == "double elimination")))
                 {
                     string currentTournamentID = reqTournamentList.tournament[i].id[0].Value;
@@ -997,7 +1000,7 @@ Resultats:", nameField, completeDateField, participantscountField, _forfeitCount
               Environment.NewLine +
               "<a href = \"{5}\" target = \"_blank\">{5}</a></td>" + Environment.NewLine,
               title,
-              Participantscount,
+              _adjustedParticipantCount,              
               participantsField[0].Name,
               participantsField[1].Name,
               participantsField[2].Name,

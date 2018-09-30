@@ -49,8 +49,8 @@ namespace ChallongeManager.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2X\r\n3rd Strike/3.3\r\nSFVAE/SFV/SF5/SF5AE\r\nVampire\r\nTekken 7/T7\r\nDBFZ/DBZ/Dragon Ba" +
-            "ll FighterZ\r\nGGXrd/XRD\r\nGarou\r\nKarnov\r\n")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2X\r\n3rd Strike/3.3\r\nSFVAE/SFV/SF5/SF5AE\r\nVampire\r\nGarou\r\nKarnov\r\nGGXrd/XRD\r\nDBFZ/" +
+            "DBZ/Dragon Ball FighterZ\r\nTekken 7/T7")]
         public string Challonge_GameList {
             get {
                 return ((string)(this["Challonge_GameList"]));

@@ -13,12 +13,11 @@
 3rd Strike/3.3
 SFVAE/SFV/SF5/SF5AE
 Vampire
-Tekken 7/T7
-DBFZ/DBZ/Dragon Ball FighterZ
-GGXrd/XRD
 Garou
 Karnov
-</Value>
+GGXrd/XRD
+DBFZ/DBZ/Dragon Ball FighterZ
+Tekken 7/T7</Value>
     </Setting>
     <Setting Name="Challonge_SearchTag" Type="System.String" Scope="User">
       <Value Profile="(Default)">LaDOSE.net - Ranking</Value>

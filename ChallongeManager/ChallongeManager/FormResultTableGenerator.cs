@@ -109,38 +109,106 @@ namespace ChallongeManager
                 {
                     t7_Code = resultList[i].GetTournamentResultsHTML("Tekken 7", 2, 100);
                 }
+                else if (resultList[i].Name.Contains("T7"))
+                {
+                    t7_Code = resultList[i].GetTournamentResultsHTML("T7", 2, 100);
+                }
                 else
                 {
                     season_Code = resultList[i].GetTournamentResultsHTML("Season Game : " + Settings.Default.SeasonGame, 2, 100);
                 }
             }
 
-            textBoxCode.Text = string.Format("<table style = \"text-align: center; margin-top: 15px;\" align = \"center\">"+
-                "<tbody>" + Environment.NewLine +
-    "<tr> " + Environment.NewLine +
-        ssf2x_Code +
-        sf3_Code+
-    "</tr> " + Environment.NewLine +
-    "<tr> " + Environment.NewLine +       
-        sf5_Code+
-        t7_Code +
-    "</tr> " +Environment.NewLine +
-    "<tr> " + Environment.NewLine +
-        vampire_Code+
-        garou_Code+
-    "</tr>" + Environment.NewLine +
-    "<tr>" + Environment.NewLine +
-        karnov_Code+
-        ggx_Code+
-    "</tr>" + Environment.NewLine +
-    "<tr>" + Environment.NewLine +
-        dbfz_Code +
-    "</tr>" + Environment.NewLine +
-    "<tr>" + Environment.NewLine +
-        season_Code+
-    "</tr>" + Environment.NewLine +
-    "</tbody> " + Environment.NewLine +
-    "</table> ");
+            List<string> finalResults = new List<string>();
+            if (ssf2x_Code != "")
+            {
+                finalResults.Add(ssf2x_Code);
+            }
+            if (sf3_Code != "")
+            {
+                finalResults.Add(sf3_Code);
+            }
+            if (sf5_Code != "")
+            {
+                finalResults.Add(sf5_Code);
+            }            
+            if (vampire_Code != "")
+            {
+                finalResults.Add(vampire_Code);
+            }
+            if (garou_Code != "")
+            {
+                finalResults.Add(garou_Code);
+            }
+            if (karnov_Code != "")
+            {
+                finalResults.Add(karnov_Code);
+            }
+            if (ggx_Code != "")
+            {
+                finalResults.Add(ggx_Code);
+            }            
+            if (dbfz_Code != "")
+            {
+                finalResults.Add(dbfz_Code);
+            }
+            if (t7_Code != "")
+            {
+                finalResults.Add(t7_Code);
+            }
+            if (season_Code != "")
+            {
+                finalResults.Add(season_Code);
+            }
+
+            textBoxCode.Text = string.Format("<table style = \"text-align: center; margin-top: 15px;\" align = \"center\">" +
+                "<tbody>" + Environment.NewLine);
+
+            int columnCounter = 0;
+            for (int i = 0; i < finalResults.Count; i++)
+            {
+                if (columnCounter == 0)
+                {
+                    textBoxCode.Text += "<tr> " + Environment.NewLine + finalResults[i];
+                    columnCounter++;
+                }
+                else if (columnCounter == 1)
+                {
+                    textBoxCode.Text += finalResults[i] + "</tr> " + Environment.NewLine;
+                    columnCounter = 0;
+                }
+            }
+
+            if (columnCounter == 1)
+            {
+                textBoxCode.Text += "</tr> " + Environment.NewLine;
+                columnCounter = 0;
+            }
+            textBoxCode.Text += "</tbody> " + Environment.NewLine + "</table> ";
+    //"<tr> " + Environment.NewLine +
+    //    ssf2x_Code +
+    //    sf3_Code+
+    //"</tr> " + Environment.NewLine +
+    //"<tr> " + Environment.NewLine +       
+    //    sf5_Code+
+    //    t7_Code +
+    //"</tr> " +Environment.NewLine +
+    //"<tr> " + Environment.NewLine +
+    //    vampire_Code+
+    //    garou_Code+
+    //"</tr>" + Environment.NewLine +
+    //"<tr>" + Environment.NewLine +
+    //    karnov_Code+
+    //    ggx_Code+
+    //"</tr>" + Environment.NewLine +
+    //"<tr>" + Environment.NewLine +
+    //    dbfz_Code +
+    //"</tr>" + Environment.NewLine +
+    //"<tr>" + Environment.NewLine +
+    //    season_Code+
+    //"</tr>" + Environment.NewLine +
+    //"</tbody> " + Environment.NewLine +
+    //"</table> ");
 
             string html = "<html><body>" + textBoxCode.Text + "</body></html>";
             webBrowserPreview.Navigate("about:blank");
