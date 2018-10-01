@@ -993,7 +993,7 @@ Resultats:", nameField, completeDateField, participantscountField, _forfeitCount
             string output = "";
             if (participantscountField >0)
             {
-                output = string.Format("<td colspan = \"{6}\" width=\"{7} % \"><span style=\"color: #ff0000;\"><strong>{0} ({1} participants) :</strong></span><br/>" + Environment.NewLine +
+                output = string.Format("<td colspan = \"{6}\" width=\"{7}%\"><span style=\"color: #ff0000;\"><strong>{0} ({1} participants) :</strong></span><br/>" + Environment.NewLine +
             "1 / {2}<br/>" + Environment.NewLine +
              "2 / {3}<br/>" + Environment.NewLine +
               "3 / {4}<br/>" + Environment.NewLine +

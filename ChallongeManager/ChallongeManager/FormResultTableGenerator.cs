@@ -107,15 +107,15 @@ namespace ChallongeManager
                 }
                 else if (resultList[i].Name.Contains("Tekken 7"))
                 {
-                    t7_Code = resultList[i].GetTournamentResultsHTML("Tekken 7", 2, 100);
+                    t7_Code = resultList[i].GetTournamentResultsHTML("Tekken 7", 1, 50);
                 }
                 else if (resultList[i].Name.Contains("T7"))
                 {
-                    t7_Code = resultList[i].GetTournamentResultsHTML("T7", 2, 100);
+                    t7_Code = resultList[i].GetTournamentResultsHTML("T7", 1, 50);
                 }
                 else
                 {
-                    season_Code = resultList[i].GetTournamentResultsHTML("Season Game : " + Settings.Default.SeasonGame, 2, 100);
+                    season_Code = resultList[i].GetTournamentResultsHTML("Season Game : " + Settings.Default.SeasonGame, 2, 50);
                 }
             }
 
