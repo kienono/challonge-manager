@@ -1175,12 +1175,12 @@ Resultats:", nameField, completeDateField, participantscountField, _forfeitCount
             return tournamentDetails;
         }
 
-        public string GetTournamentResultsHTML(string title, int colspan, int width)
+        public string GetTournamentResultsHTML(string title, int colspan)
         {
             string output = "";
             if (participantscountField >0)
             {
-                output = string.Format("<td colspan = \"{6}\" width=\"{7}%\"><span style=\"color: #ff0000;\"><strong>{0} ({1} participants) :</strong></span><br/>" + Environment.NewLine +
+                output = string.Format("<td colspan = \"{6}\"><span style=\"color: #ff0000;\"><strong>{0} ({1} participants) :</strong></span><br/>" + Environment.NewLine +
             "1 / {2}<br/>" + Environment.NewLine +
              "2 / {3}<br/>" + Environment.NewLine +
               "3 / {4}<br/>" + Environment.NewLine +
@@ -1192,8 +1192,7 @@ Resultats:", nameField, completeDateField, participantscountField, _forfeitCount
               participantsField[1].Name,
               participantsField[2].Name,
               Fullchallongeurl,
-              colspan,
-              width);
+              colspan);
             }
 
             return output;

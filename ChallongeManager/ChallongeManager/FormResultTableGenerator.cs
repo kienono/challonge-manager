@@ -59,11 +59,10 @@ namespace ChallongeManager
             progressBarRequest.Style = ProgressBarStyle.Continuous;
             progressBarRequest.Value = 100;
 
-            // TODO: Request completed, generate code
+            // Request completed, generate code
             string ssf2x_Code = "";
             string sf3_Code = "";
-            string karnov_Code = "";
-            string dbfz_Code = "";
+            string unib_Code = "";
             string sf5_Code = "";
             string ggx_Code = "";
             string garou_Code = "";
@@ -75,47 +74,47 @@ namespace ChallongeManager
             {               
                 if (resultList[i].Name.Contains("2X"))
                 {
-                    ssf2x_Code = resultList[i].GetTournamentResultsHTML("2X",1,50);
+                    ssf2x_Code = resultList[i].GetTournamentResultsHTML("2X",1);
                 }
                 else if (resultList[i].Name.Contains("3.3"))
                 {
-                    sf3_Code = resultList[i].GetTournamentResultsHTML("3.3", 1, 50);
+                    sf3_Code = resultList[i].GetTournamentResultsHTML("3.3", 1);
                 }
-                else if (resultList[i].Name.Contains("DBFZ"))
+                else if (resultList[i].Name.Contains("UNIST") || resultList[i].Name.Contains("UNIB"))
                 {
-                    dbfz_Code = resultList[i].GetTournamentResultsHTML("DBFZ", 1, 50);
+                    unib_Code = resultList[i].GetTournamentResultsHTML("UNIST", 1);
+                }
+                else if (resultList[i].Name.Contains("UNIB"))
+                {
+                    unib_Code = resultList[i].GetTournamentResultsHTML("UNIB", 1);
                 }
                 else if (resultList[i].Name.Contains("SFV"))
                 {
-                    sf5_Code = resultList[i].GetTournamentResultsHTML("SFV", 1, 50);
+                    sf5_Code = resultList[i].GetTournamentResultsHTML("SFV", 1);
                 }
                 else if (resultList[i].Name.Contains("Garou"))
                 {
-                    garou_Code = resultList[i].GetTournamentResultsHTML("Garou", 1, 50);
+                    garou_Code = resultList[i].GetTournamentResultsHTML("Garou", 1);
                 }
                 else if (resultList[i].Name.Contains("XRD"))
                 {
-                    ggx_Code = resultList[i].GetTournamentResultsHTML("XRD", 1, 50);
+                    ggx_Code = resultList[i].GetTournamentResultsHTML("XRD", 1);
                 }
                 else if (resultList[i].Name.Contains("Vampire"))
                 {
-                    vampire_Code = resultList[i].GetTournamentResultsHTML("Vampire", 1, 50);
-                }
-                else if (resultList[i].Name.Contains("Karnov"))
-                {
-                    karnov_Code = resultList[i].GetTournamentResultsHTML("Karnov", 1, 50);
+                    vampire_Code = resultList[i].GetTournamentResultsHTML("Vampire", 1);
                 }
                 else if (resultList[i].Name.Contains("Tekken 7"))
                 {
-                    t7_Code = resultList[i].GetTournamentResultsHTML("Tekken 7", 1, 50);
+                    t7_Code = resultList[i].GetTournamentResultsHTML("Tekken 7", 1);
                 }
                 else if (resultList[i].Name.Contains("T7"))
                 {
-                    t7_Code = resultList[i].GetTournamentResultsHTML("T7", 1, 50);
+                    t7_Code = resultList[i].GetTournamentResultsHTML("T7", 1);
                 }
                 else
                 {
-                    season_Code = resultList[i].GetTournamentResultsHTML("Season Game : " + Settings.Default.SeasonGame, 2, 50);
+                    season_Code = resultList[i].GetTournamentResultsHTML("Season Game : " + Settings.Default.SeasonGame, 2);
                 }
             }
 
@@ -139,18 +138,14 @@ namespace ChallongeManager
             if (garou_Code != "")
             {
                 finalResults.Add(garou_Code);
-            }
-            if (karnov_Code != "")
-            {
-                finalResults.Add(karnov_Code);
-            }
+            }            
             if (ggx_Code != "")
             {
                 finalResults.Add(ggx_Code);
-            }            
-            if (dbfz_Code != "")
+            }
+            if (unib_Code != "")
             {
-                finalResults.Add(dbfz_Code);
+                finalResults.Add(unib_Code);
             }
             if (t7_Code != "")
             {
@@ -161,7 +156,8 @@ namespace ChallongeManager
                 finalResults.Add(season_Code);
             }
 
-            textBoxCode.Text = string.Format("<table style = \"text-align: center; margin-top: 15px;\" align = \"center\">" +
+
+            textBoxCode.Text = string.Format("<table class=\"table table - responsive - md table - dark table - striped mt - lg - 5 mt - 4\">" +
                 "<tbody>" + Environment.NewLine);
 
             int columnCounter = 0;
@@ -185,30 +181,6 @@ namespace ChallongeManager
                 columnCounter = 0;
             }
             textBoxCode.Text += "</tbody> " + Environment.NewLine + "</table> ";
-    //"<tr> " + Environment.NewLine +
-    //    ssf2x_Code +
-    //    sf3_Code+
-    //"</tr> " + Environment.NewLine +
-    //"<tr> " + Environment.NewLine +       
-    //    sf5_Code+
-    //    t7_Code +
-    //"</tr> " +Environment.NewLine +
-    //"<tr> " + Environment.NewLine +
-    //    vampire_Code+
-    //    garou_Code+
-    //"</tr>" + Environment.NewLine +
-    //"<tr>" + Environment.NewLine +
-    //    karnov_Code+
-    //    ggx_Code+
-    //"</tr>" + Environment.NewLine +
-    //"<tr>" + Environment.NewLine +
-    //    dbfz_Code +
-    //"</tr>" + Environment.NewLine +
-    //"<tr>" + Environment.NewLine +
-    //    season_Code+
-    //"</tr>" + Environment.NewLine +
-    //"</tbody> " + Environment.NewLine +
-    //"</table> ");
 
             string html = "<html><body>" + textBoxCode.Text + "</body></html>";
             webBrowserPreview.Navigate("about:blank");
