@@ -39,13 +39,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.backgroundWorkerChallongeRequest = new System.ComponentModel.BackgroundWorker();
             this.groupBoxResults = new System.Windows.Forms.GroupBox();
-            this.buttonUpdateTable = new System.Windows.Forms.Button();
-            this.textBoxTournamentDetails = new System.Windows.Forms.TextBox();
-            this.buttonCopy = new System.Windows.Forms.Button();
-            this.buttonExtractToCSV = new System.Windows.Forms.Button();
+            this.tabControlData = new System.Windows.Forms.TabControl();
+            this.tabPagePoints = new System.Windows.Forms.TabPage();
             this.listViewPoints = new System.Windows.Forms.ListView();
+            this.buttonUpdatePointTable = new System.Windows.Forms.Button();
+            this.buttonExtractPointsToCSV = new System.Windows.Forms.Button();
+            this.buttonCopyPoints = new System.Windows.Forms.Button();
+            this.tabPageStats = new System.Windows.Forms.TabPage();
+            this.listViewStats = new System.Windows.Forms.ListView();
+            this.buttonUpdateStats = new System.Windows.Forms.Button();
+            this.buttonExportStatsToCSV = new System.Windows.Forms.Button();
+            this.buttonCopyStats = new System.Windows.Forms.Button();
+            this.textBoxTournamentDetails = new System.Windows.Forms.TextBox();
             this.checkedListBoxTournois = new System.Windows.Forms.CheckedListBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.saveFileDialogCSV = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -61,6 +67,9 @@
             this.tabPageRankingManager = new System.Windows.Forms.TabPage();
             this.groupBoxDataRetrieval.SuspendLayout();
             this.groupBoxResults.SuspendLayout();
+            this.tabControlData.SuspendLayout();
+            this.tabPagePoints.SuspendLayout();
+            this.tabPageStats.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.tabPageRankingManager.SuspendLayout();
@@ -88,7 +97,7 @@
             this.groupBoxDataRetrieval.Controls.Add(this.label1);
             this.groupBoxDataRetrieval.Location = new System.Drawing.Point(0, 3);
             this.groupBoxDataRetrieval.Name = "groupBoxDataRetrieval";
-            this.groupBoxDataRetrieval.Size = new System.Drawing.Size(736, 103);
+            this.groupBoxDataRetrieval.Size = new System.Drawing.Size(755, 103);
             this.groupBoxDataRetrieval.TabIndex = 1;
             this.groupBoxDataRetrieval.TabStop = false;
             this.groupBoxDataRetrieval.Text = "Récupération de données sur Challonge.com";
@@ -99,7 +108,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBarDataRequest.Location = new System.Drawing.Point(11, 72);
             this.progressBarDataRequest.Name = "progressBarDataRequest";
-            this.progressBarDataRequest.Size = new System.Drawing.Size(711, 22);
+            this.progressBarDataRequest.Size = new System.Drawing.Size(730, 22);
             this.progressBarDataRequest.TabIndex = 3;
             // 
             // buttonDataRequest
@@ -154,63 +163,43 @@
             this.groupBoxResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxResults.Controls.Add(this.buttonUpdateTable);
+            this.groupBoxResults.Controls.Add(this.tabControlData);
             this.groupBoxResults.Controls.Add(this.textBoxTournamentDetails);
-            this.groupBoxResults.Controls.Add(this.buttonCopy);
-            this.groupBoxResults.Controls.Add(this.buttonExtractToCSV);
-            this.groupBoxResults.Controls.Add(this.listViewPoints);
             this.groupBoxResults.Controls.Add(this.checkedListBoxTournois);
-            this.groupBoxResults.Controls.Add(this.label5);
             this.groupBoxResults.Controls.Add(this.label4);
             this.groupBoxResults.Location = new System.Drawing.Point(0, 112);
             this.groupBoxResults.Name = "groupBoxResults";
-            this.groupBoxResults.Size = new System.Drawing.Size(748, 408);
+            this.groupBoxResults.Size = new System.Drawing.Size(767, 488);
             this.groupBoxResults.TabIndex = 2;
             this.groupBoxResults.TabStop = false;
             this.groupBoxResults.Text = "Résultats";
             // 
-            // buttonUpdateTable
+            // tabControlData
             // 
-            this.buttonUpdateTable.Location = new System.Drawing.Point(114, 173);
-            this.buttonUpdateTable.Name = "buttonUpdateTable";
-            this.buttonUpdateTable.Size = new System.Drawing.Size(75, 25);
-            this.buttonUpdateTable.TabIndex = 6;
-            this.buttonUpdateTable.Text = "Rafraichir";
-            this.buttonUpdateTable.UseVisualStyleBackColor = true;
-            this.buttonUpdateTable.Click += new System.EventHandler(this.buttonUpdateTable_Click);
+            this.tabControlData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControlData.Controls.Add(this.tabPagePoints);
+            this.tabControlData.Controls.Add(this.tabPageStats);
+            this.tabControlData.Location = new System.Drawing.Point(11, 171);
+            this.tabControlData.Name = "tabControlData";
+            this.tabControlData.SelectedIndex = 0;
+            this.tabControlData.Size = new System.Drawing.Size(742, 311);
+            this.tabControlData.TabIndex = 7;
             // 
-            // textBoxTournamentDetails
+            // tabPagePoints
             // 
-            this.textBoxTournamentDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxTournamentDetails.Location = new System.Drawing.Point(374, 41);
-            this.textBoxTournamentDetails.Multiline = true;
-            this.textBoxTournamentDetails.Name = "textBoxTournamentDetails";
-            this.textBoxTournamentDetails.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxTournamentDetails.Size = new System.Drawing.Size(360, 125);
-            this.textBoxTournamentDetails.TabIndex = 5;
-            this.textBoxTournamentDetails.WordWrap = false;
-            // 
-            // buttonCopy
-            // 
-            this.buttonCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonCopy.Location = new System.Drawing.Point(150, 372);
-            this.buttonCopy.Name = "buttonCopy";
-            this.buttonCopy.Size = new System.Drawing.Size(181, 25);
-            this.buttonCopy.TabIndex = 4;
-            this.buttonCopy.Text = "Copier dans le presse papier";
-            this.buttonCopy.UseVisualStyleBackColor = true;
-            this.buttonCopy.Click += new System.EventHandler(this.buttonCopy_Click);
-            // 
-            // buttonExtractToCSV
-            // 
-            this.buttonExtractToCSV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonExtractToCSV.Location = new System.Drawing.Point(12, 372);
-            this.buttonExtractToCSV.Name = "buttonExtractToCSV";
-            this.buttonExtractToCSV.Size = new System.Drawing.Size(132, 25);
-            this.buttonExtractToCSV.TabIndex = 4;
-            this.buttonExtractToCSV.Text = "Exporter vers CSV";
-            this.buttonExtractToCSV.UseVisualStyleBackColor = true;
-            this.buttonExtractToCSV.Click += new System.EventHandler(this.buttonExtractToCSV_Click);
+            this.tabPagePoints.Controls.Add(this.listViewPoints);
+            this.tabPagePoints.Controls.Add(this.buttonUpdatePointTable);
+            this.tabPagePoints.Controls.Add(this.buttonExtractPointsToCSV);
+            this.tabPagePoints.Controls.Add(this.buttonCopyPoints);
+            this.tabPagePoints.Location = new System.Drawing.Point(4, 22);
+            this.tabPagePoints.Name = "tabPagePoints";
+            this.tabPagePoints.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPagePoints.Size = new System.Drawing.Size(734, 285);
+            this.tabPagePoints.TabIndex = 0;
+            this.tabPagePoints.Text = "Points";
+            this.tabPagePoints.UseVisualStyleBackColor = true;
             // 
             // listViewPoints
             // 
@@ -218,13 +207,116 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewPoints.GridLines = true;
-            this.listViewPoints.Location = new System.Drawing.Point(11, 209);
+            this.listViewPoints.Location = new System.Drawing.Point(6, 37);
             this.listViewPoints.Name = "listViewPoints";
-            this.listViewPoints.Size = new System.Drawing.Size(723, 152);
+            this.listViewPoints.Size = new System.Drawing.Size(722, 211);
             this.listViewPoints.TabIndex = 3;
             this.listViewPoints.UseCompatibleStateImageBehavior = false;
             this.listViewPoints.View = System.Windows.Forms.View.Details;
             this.listViewPoints.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewPoints_ColumnClick);
+            // 
+            // buttonUpdatePointTable
+            // 
+            this.buttonUpdatePointTable.Location = new System.Drawing.Point(6, 6);
+            this.buttonUpdatePointTable.Name = "buttonUpdatePointTable";
+            this.buttonUpdatePointTable.Size = new System.Drawing.Size(75, 25);
+            this.buttonUpdatePointTable.TabIndex = 6;
+            this.buttonUpdatePointTable.Text = "Rafraichir";
+            this.buttonUpdatePointTable.UseVisualStyleBackColor = true;
+            this.buttonUpdatePointTable.Click += new System.EventHandler(this.buttonUpdateTable_Click);
+            // 
+            // buttonExtractPointsToCSV
+            // 
+            this.buttonExtractPointsToCSV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonExtractPointsToCSV.Location = new System.Drawing.Point(8, 254);
+            this.buttonExtractPointsToCSV.Name = "buttonExtractPointsToCSV";
+            this.buttonExtractPointsToCSV.Size = new System.Drawing.Size(132, 25);
+            this.buttonExtractPointsToCSV.TabIndex = 4;
+            this.buttonExtractPointsToCSV.Text = "Exporter vers CSV";
+            this.buttonExtractPointsToCSV.UseVisualStyleBackColor = true;
+            this.buttonExtractPointsToCSV.Click += new System.EventHandler(this.buttonExtractToCSV_Click);
+            // 
+            // buttonCopyPoints
+            // 
+            this.buttonCopyPoints.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonCopyPoints.Location = new System.Drawing.Point(146, 254);
+            this.buttonCopyPoints.Name = "buttonCopyPoints";
+            this.buttonCopyPoints.Size = new System.Drawing.Size(181, 25);
+            this.buttonCopyPoints.TabIndex = 4;
+            this.buttonCopyPoints.Text = "Copier dans le presse papier";
+            this.buttonCopyPoints.UseVisualStyleBackColor = true;
+            this.buttonCopyPoints.Click += new System.EventHandler(this.buttonCopy_Click);
+            // 
+            // tabPageStats
+            // 
+            this.tabPageStats.Controls.Add(this.listViewStats);
+            this.tabPageStats.Controls.Add(this.buttonUpdateStats);
+            this.tabPageStats.Controls.Add(this.buttonExportStatsToCSV);
+            this.tabPageStats.Controls.Add(this.buttonCopyStats);
+            this.tabPageStats.Location = new System.Drawing.Point(4, 22);
+            this.tabPageStats.Name = "tabPageStats";
+            this.tabPageStats.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageStats.Size = new System.Drawing.Size(734, 285);
+            this.tabPageStats.TabIndex = 1;
+            this.tabPageStats.Text = "Statistiques";
+            this.tabPageStats.UseVisualStyleBackColor = true;
+            // 
+            // listViewStats
+            // 
+            this.listViewStats.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewStats.GridLines = true;
+            this.listViewStats.Location = new System.Drawing.Point(6, 37);
+            this.listViewStats.Name = "listViewStats";
+            this.listViewStats.Size = new System.Drawing.Size(722, 211);
+            this.listViewStats.TabIndex = 7;
+            this.listViewStats.UseCompatibleStateImageBehavior = false;
+            this.listViewStats.View = System.Windows.Forms.View.Details;
+            this.listViewStats.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewStats_ColumnClick);
+            // 
+            // buttonUpdateStats
+            // 
+            this.buttonUpdateStats.Location = new System.Drawing.Point(6, 6);
+            this.buttonUpdateStats.Name = "buttonUpdateStats";
+            this.buttonUpdateStats.Size = new System.Drawing.Size(75, 25);
+            this.buttonUpdateStats.TabIndex = 10;
+            this.buttonUpdateStats.Text = "Rafraichir";
+            this.buttonUpdateStats.UseVisualStyleBackColor = true;
+            this.buttonUpdateStats.Click += new System.EventHandler(this.buttonUpdateStats_Click);
+            // 
+            // buttonExportStatsToCSV
+            // 
+            this.buttonExportStatsToCSV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonExportStatsToCSV.Location = new System.Drawing.Point(8, 254);
+            this.buttonExportStatsToCSV.Name = "buttonExportStatsToCSV";
+            this.buttonExportStatsToCSV.Size = new System.Drawing.Size(132, 25);
+            this.buttonExportStatsToCSV.TabIndex = 8;
+            this.buttonExportStatsToCSV.Text = "Exporter vers CSV";
+            this.buttonExportStatsToCSV.UseVisualStyleBackColor = true;
+            this.buttonExportStatsToCSV.Click += new System.EventHandler(this.buttonExportStatsToCSV_Click);
+            // 
+            // buttonCopyStats
+            // 
+            this.buttonCopyStats.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonCopyStats.Location = new System.Drawing.Point(146, 254);
+            this.buttonCopyStats.Name = "buttonCopyStats";
+            this.buttonCopyStats.Size = new System.Drawing.Size(181, 25);
+            this.buttonCopyStats.TabIndex = 9;
+            this.buttonCopyStats.Text = "Copier dans le presse papier";
+            this.buttonCopyStats.UseVisualStyleBackColor = true;
+            this.buttonCopyStats.Click += new System.EventHandler(this.buttonCopyStats_Click);
+            // 
+            // textBoxTournamentDetails
+            // 
+            this.textBoxTournamentDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxTournamentDetails.Location = new System.Drawing.Point(393, 41);
+            this.textBoxTournamentDetails.Multiline = true;
+            this.textBoxTournamentDetails.Name = "textBoxTournamentDetails";
+            this.textBoxTournamentDetails.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxTournamentDetails.Size = new System.Drawing.Size(360, 125);
+            this.textBoxTournamentDetails.TabIndex = 5;
+            this.textBoxTournamentDetails.WordWrap = false;
             // 
             // checkedListBoxTournois
             // 
@@ -233,18 +325,9 @@
             this.checkedListBoxTournois.FormattingEnabled = true;
             this.checkedListBoxTournois.Location = new System.Drawing.Point(11, 41);
             this.checkedListBoxTournois.Name = "checkedListBoxTournois";
-            this.checkedListBoxTournois.Size = new System.Drawing.Size(357, 124);
+            this.checkedListBoxTournois.Size = new System.Drawing.Size(376, 124);
             this.checkedListBoxTournois.TabIndex = 2;
             this.checkedListBoxTournois.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxTournois_SelectedIndexChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 179);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(95, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Tableau de points:";
             // 
             // label4
             // 
@@ -267,7 +350,7 @@
             this.optionsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(752, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(771, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -304,7 +387,7 @@
             // eventManagerToolStripMenuItem
             // 
             this.eventManagerToolStripMenuItem.Name = "eventManagerToolStripMenuItem";
-            this.eventManagerToolStripMenuItem.Size = new System.Drawing.Size(273, 22);
+            this.eventManagerToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
             this.eventManagerToolStripMenuItem.Text = "Gestion d\'&évènement";
             this.eventManagerToolStripMenuItem.Visible = false;
             this.eventManagerToolStripMenuItem.Click += new System.EventHandler(this.eventManagerToolStripMenuItem_Click);
@@ -312,7 +395,7 @@
             // resultTableGenerationToolStripMenuItem
             // 
             this.resultTableGenerationToolStripMenuItem.Name = "resultTableGenerationToolStripMenuItem";
-            this.resultTableGenerationToolStripMenuItem.Size = new System.Drawing.Size(273, 22);
+            this.resultTableGenerationToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
             this.resultTableGenerationToolStripMenuItem.Text = "&Générer un tableau de résultats HTML";
             this.resultTableGenerationToolStripMenuItem.Click += new System.EventHandler(this.resultTableGenerationToolStripMenuItem_Click);
             // 
@@ -338,7 +421,7 @@
             this.tabControlMain.Location = new System.Drawing.Point(0, 24);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(752, 542);
+            this.tabControlMain.Size = new System.Drawing.Size(771, 622);
             this.tabControlMain.TabIndex = 4;
             // 
             // tabPageRankingManager
@@ -348,7 +431,7 @@
             this.tabPageRankingManager.Location = new System.Drawing.Point(4, 22);
             this.tabPageRankingManager.Name = "tabPageRankingManager";
             this.tabPageRankingManager.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageRankingManager.Size = new System.Drawing.Size(744, 516);
+            this.tabPageRankingManager.Size = new System.Drawing.Size(763, 596);
             this.tabPageRankingManager.TabIndex = 0;
             this.tabPageRankingManager.Text = "Gestion Score et Ranking";
             this.tabPageRankingManager.UseVisualStyleBackColor = true;
@@ -357,7 +440,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(752, 566);
+            this.ClientSize = new System.Drawing.Size(771, 646);
             this.Controls.Add(this.tabControlMain);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -369,6 +452,9 @@
             this.groupBoxDataRetrieval.PerformLayout();
             this.groupBoxResults.ResumeLayout(false);
             this.groupBoxResults.PerformLayout();
+            this.tabControlData.ResumeLayout(false);
+            this.tabPagePoints.ResumeLayout(false);
+            this.tabPageStats.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControlMain.ResumeLayout(false);
@@ -393,8 +479,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckedListBox checkedListBoxTournois;
         private System.Windows.Forms.ListView listViewPoints;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button buttonExtractToCSV;
+        private System.Windows.Forms.Button buttonExtractPointsToCSV;
         private System.Windows.Forms.SaveFileDialog saveFileDialogCSV;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fichierToolStripMenuItem;
@@ -402,14 +487,21 @@
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem parametresToolStripMenuItem;
         private System.Windows.Forms.TextBox textBoxTournamentDetails;
-        private System.Windows.Forms.Button buttonUpdateTable;
-        private System.Windows.Forms.Button buttonCopy;
+        private System.Windows.Forms.Button buttonUpdatePointTable;
+        private System.Windows.Forms.Button buttonCopyPoints;
         private System.Windows.Forms.TabControl tabControlMain;
         private System.Windows.Forms.TabPage tabPageRankingManager;
         private System.Windows.Forms.ToolStripMenuItem affichageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eventManagerToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem resultTableGenerationToolStripMenuItem;
+        private System.Windows.Forms.TabControl tabControlData;
+        private System.Windows.Forms.TabPage tabPagePoints;
+        private System.Windows.Forms.TabPage tabPageStats;
+        private System.Windows.Forms.ListView listViewStats;
+        private System.Windows.Forms.Button buttonUpdateStats;
+        private System.Windows.Forms.Button buttonExportStatsToCSV;
+        private System.Windows.Forms.Button buttonCopyStats;
     }
 }
 

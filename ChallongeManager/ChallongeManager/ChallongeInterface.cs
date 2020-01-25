@@ -51,6 +51,8 @@ namespace ChallongeManager
         public bool GetTournaments(DateTime afterDate, DateTime beforeDate)
         {
             bool ret = false;
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             if (beforeDate > afterDate)
             {
                 _tournamentsList = new List<wr_Tournament>();
@@ -64,8 +66,8 @@ namespace ChallongeManager
                                                                 beforeDate.ToString("yyyy-MM-dd"));
                 WebRequest request = WebRequest.Create(tournamentListRequest);
                 System.Net.NetworkCredential netCredential = new System.Net.NetworkCredential(Settings.Default.Challonge_ID, Settings.Default.Challonge_APIkey, "");
-                request.Credentials = netCredential;
-                
+                request.Credentials = netCredential;                              
+
                 WebResponse response = request.GetResponse();
                 Stream dataStream = response.GetResponseStream();
 
@@ -120,6 +122,9 @@ namespace ChallongeManager
         public bool GetEventTournaments(DateTime eventDate, string tag, out List<wr_Tournament> resultList)
         {
             bool ret = false;
+
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             resultList = new List<wr_Tournament>();
             // date consistency ok, retrieve data
@@ -186,6 +191,9 @@ namespace ChallongeManager
         public bool GetTournamentData(string tournamentID, out tournamentEventDoubleElimBracket retrievedTournament)
         {
             bool ret = false;
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
             wr_Tournament retrievedWrTournament = new wr_Tournament();
             retrievedTournament = new tournamentEventDoubleElimBracket();
 
@@ -385,6 +393,46 @@ namespace ChallongeManager
                             resultsByPlayers.Add(new Player(consideredTournaments[i].Participants[j].Name));
                             resultsByPlayers[resultsByPlayers.Count - 1].AddPoints(currentGame, consideredTournaments[i].Participants[j].EarnedPoints);
                         }
+                    }
+                }
+            }
+            return ret;
+        }
+        
+        public bool GetEventStats(List<wr_Tournament> consideredTournaments,
+                               out List<Event> resultsByEvent)
+        {
+            bool ret = false;
+            resultsByEvent = new List<Event>();
+            for (int i = 0; i < consideredTournaments.Count; i++)
+            {
+                // Search associated game
+                Game currentGame = null;
+                for (int j = 0; (j < _gameList.Count) && (currentGame == null); j++)
+                {
+                    if (_gameList[j].StringContainThisgame(consideredTournaments[i].Name))
+                    {
+                        currentGame = _gameList[j];
+                    }
+                }
+                if (currentGame != null)
+                {
+                    DateTime tournamentDate = consideredTournaments[i].CreateDate;
+                    int eventIndex = resultsByEvent.FindIndex(delegate (Event p)
+                    {
+                        bool dateMatch = p.IsSameDate(tournamentDate);
+
+                        return dateMatch;
+                    });
+
+                    if (eventIndex != -1)
+                    {
+                        resultsByEvent[eventIndex].AddAttendants(currentGame, consideredTournaments[i].Participantscount);
+                    }
+                    else
+                    {
+                        resultsByEvent.Add(new Event(consideredTournaments[i].Name, consideredTournaments[i].CreateDate));
+                        resultsByEvent[resultsByEvent.Count - 1].AddAttendants(currentGame, consideredTournaments[i].Participantscount);
                     }
                 }
             }
@@ -594,7 +642,7 @@ namespace ChallongeManager
 
     public class Player:IComparable<Player>
     {
-         #region Fields
+        #region Fields
         private string _name;
         private List<string> _aliasList = new List<string>();
         private Dictionary<Game, int> _earnedPoints = new Dictionary<Game, int>();
@@ -734,6 +782,145 @@ namespace ChallongeManager
         public int CompareTo(Player other)
         {
             return GetTotalPoints().CompareTo(other.GetTotalPoints());
+        }
+
+        #endregion
+    }
+
+    public class Event : IComparable<Event>
+    {
+        #region Fields
+        private string _name;
+        private DateTime _date;        
+        private Dictionary<Game, int> _attendantsPerGame = new Dictionary<Game, int>();
+        private Dictionary<int, int> _attendantsPerGameCount = new Dictionary<int, int>();
+        #endregion
+
+        #region Properties
+        public string Name
+        {
+            get { return _name; }
+        }
+
+        public DateTime Date
+        {
+            get { return _date; }
+        }
+        #endregion
+
+        #region CTOR
+        public Event(string name, DateTime date)
+        {
+            _name = name;
+            _date = date;
+        }
+        #endregion
+
+        #region Method
+        public bool IsSameDate(DateTime dateToCheck)
+        {
+            return (dateToCheck.Date == _date.Date);
+        }
+
+        public int GetTotalAttendants()
+        {
+            int totalAttendants = 0;
+            foreach (KeyValuePair<Game, int> var in _attendantsPerGame)
+            {
+                totalAttendants += var.Value;
+            }
+            return totalAttendants;
+        }
+
+        /// <summary>
+        /// Set the nb of attandants for a given game. The data overrides the existing data. If necessary, creates the new record in the
+        /// player game results list.
+        /// </summary>
+        /// <param name="game"></param>
+        /// <param name="attendants"></param>
+        public void SetAttendants(Game game, int attendants)
+        {
+            if (_attendantsPerGame.ContainsKey(game))
+            {
+                _attendantsPerGame[game] = attendants;
+            }
+            else
+            {
+                _attendantsPerGame.Add(game, attendants);
+            }
+        }
+
+        /// <summary>
+        /// Add attendants for a given game. If necessary, creates the new record in the
+        /// player game results list.
+        /// </summary>
+        /// <param name="game"></param>
+        /// <param name="attendants"></param>
+        public void AddAttendants(Game game, int attendants)
+        {
+            if (_attendantsPerGame.ContainsKey(game))
+            {
+                _attendantsPerGame[game] += attendants;
+            }
+            else
+            {
+                _attendantsPerGame.Add(game, attendants);
+            }
+        }
+
+        /// <summary>
+        /// Add attendants for a game attendance count. If necessary, creates the new record in the
+        /// player game results list.
+        /// </summary>
+        /// <param name="gameCount"></param>
+        /// <param name="attendants"></param>
+        public void AddAttendants(int gameCount, int attendants)
+        {
+            if (_attendantsPerGameCount.ContainsKey(gameCount))
+            {
+                _attendantsPerGameCount[gameCount] += attendants;
+            }
+            else
+            {
+                _attendantsPerGameCount.Add(gameCount, attendants);
+            }
+        }
+
+        public bool GetAttendants(string game, out int attendants)
+        {
+            bool ret = false;
+            attendants = 0;
+            foreach (KeyValuePair<Game, int> var in _attendantsPerGame)
+            {
+                if (var.Key.StringContainThisgame(game))
+                {
+                    ret = true;
+                    attendants = var.Value;
+                }
+            }
+            return ret;
+        }
+
+        public bool GetAttendants(int gameCount, out int attendants)
+        {
+            bool ret = false;
+            attendants = 0;
+            foreach (KeyValuePair<int, int> var in _attendantsPerGameCount)
+            {
+                if (var.Key == gameCount)
+                {
+                    ret = true;
+                    attendants = var.Value;
+                }
+            }
+            return ret;
+        }
+        #endregion
+        #region IComparable<Event> Membres
+
+        public int CompareTo(Event other)
+        {
+            return _date.CompareTo(other.Date);
         }
 
         #endregion
